@@ -1,5 +1,5 @@
 // =========================================================================
-// KHC Finds - Affiliate Catalog Database
+// Trigger Vercel rebuild for static settings
 // =========================================================================
 // To add, remove, or edit products, categories, or tags, simply edit this file!
 // Make sure to preserve the array structure and comma formatting.
