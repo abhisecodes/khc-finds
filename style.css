@@ -1217,3 +1217,54 @@ footer {
 .box-list li {
   line-height: 1.4;
 }
+
+/* --- Mobile Responsiveness Adjustments --- */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 0 30px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+  .catalog-toolbar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    text-align: center;
+  }
+  .catalog-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  .select-sort {
+    width: 100%;
+    text-align: center;
+  }
+  .view-toggle {
+    display: none; /* Hide grid/list toggle on mobile, default to grid */
+  }
+  .modal-content {
+    padding: 20px 15px;
+    gap: 15px;
+    max-height: 95vh;
+  }
+  .modal-img-container {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    display: none; /* Hide text on extremely small screens to fit button */
+  }
+  .container {
+    padding: 0 15px;
+  }
+  .products-grid {
+    grid-template-columns: 1fr; /* Single column grid on small mobile */
+  }
+}
