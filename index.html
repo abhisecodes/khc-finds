@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KHC Finds - Premium Affiliate Discovery Platform</title>
+  <meta name="description" content="Discover viral Amazon finds, developer tools, top AI apps, creator gear, and student picks. Curated, reviewed, and optimized for your lifestyle.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Animated Blobs -->
+  <div class="blob-container">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <!-- Header Navbar -->
+  <header id="main-header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">K</div>
+        <div class="logo-text">
+          <span>KHC <span style="font-weight: 500; color: var(--primary);">Finds</span></span>
+          <span class="logo-sub">Affiliate Portal</span>
+        </div>
+      </a>
+      
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+          <!-- Sun Icon -->
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon -->
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        <a href="#explore" class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+          <span>Explore Deals</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero container">
+    <div class="badge-tag">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+      </svg>
+      <span>Affiliate & Deals Directory</span>
+    </div>
+    <h1>Find The Best <span>Viral & Useful</span> Affiliate Finds</h1>
+    <p>Instant comparison and deals discovery. Finding top deals, developer gear, student picks, and viral internet finds just got 10x faster.</p>
+  </section>
+
+  <!-- Main Explore Dashboard Catalog -->
+  <main id="explore" class="container">
+    <div class="dashboard-grid">
+      
+      <!-- Sidebar Filters -->
+      <aside class="sidebar">
+        <!-- Search Box -->
+        <div class="glass-panel">
+          <h3 class="sidebar-title">Search</h3>
+          <div class="search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-input" placeholder="Type keyword...">
+          </div>
+        </div>
+
+        <!-- Categories Filter -->
+        <div class="glass-panel">
+          <h3 class="sidebar-title">Categories</h3>
+          <div class="filter-list" id="category-filter-list">
+            <!-- Populated dynamically via app.js -->
+          </div>
+        </div>
+
+        <!-- Tags Filter -->
+        <div class="glass-panel">
+          <h3 class="sidebar-title">Popular Tags</h3>
+          <div class="tag-cloud" id="tag-filter-list">
+            <!-- Populated dynamically via app.js -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- Catalog Main Listings -->
+      <section class="catalog-area">
+        
+        <!-- Controls Toolbar Bar -->
+        <div class="glass-panel catalog-toolbar">
+          <div class="catalog-info" id="catalog-count-info">
+            Showing <span>0</span> finds
+          </div>
+          
+          <div class="catalog-controls">
+            <!-- Sort dropdown -->
+            <select id="sort-select" class="select-sort">
+              <option value="trending">🔥 Sort: Trending</option>
+              <option value="newest">📅 Sort: Newest</option>
+              <option value="highest_rated">⭐ Sort: Highest Rated</option>
+            </select>
+
+            <!-- Grid/List View Toggles -->
+            <div class="view-toggle">
+              <button id="view-grid-btn" class="view-btn active" aria-label="Grid View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </button>
+              <button id="view-list-btn" class="view-btn" aria-label="List View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="8" y1="6" x2="21" y2="6"></line>
+                  <line x1="8" y1="12" x2="21" y2="12"></line>
+                  <line x1="8" y1="18" x2="21" y2="18"></line>
+                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                  <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                  <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Listings Container -->
+        <div id="product-list-container" class="products-grid">
+          <!-- Populated dynamically via app.js -->
+        </div>
+
+        <!-- Coming Soon & Email Subscription banner -->
+        <div class="glass-panel" style="margin-top: 40px; padding: 40px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; border: 1.5px dashed var(--primary-hover);">
+          <div class="badge-tag" style="background: var(--primary-glow); color: var(--primary); margin-bottom: 0;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <span>Exclusive Deal Updates</span>
+          </div>
+          <h2 style="font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em;">Coming with more amazing products!</h2>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); max-width: 500px; margin-bottom: 10px;">We're currently cataloging and reviewing more viral products, discount codes, and tech setups. Subscribe to get notified instantly when the store updates.</p>
+          <form class="newsletter-form" id="coming-soon-newsletter" style="width: 100%; max-width: 400px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 12px; overflow: hidden; display: flex;">
+            <input type="email" id="coming-soon-email" placeholder="Enter your email address" required style="flex-grow: 1; padding: 12px 16px; border: 1px solid var(--border-light); border-right: none; outline: none; font-size: 0.875rem; background: var(--bg-secondary); color: var(--text-primary); border-radius: 12px 0 0 12px;">
+            <button type="submit" class="btn btn-primary" style="border-radius: 0 12px 12px 0; font-size: 0.875rem; padding: 12px 24px; cursor: pointer; flex-shrink: 0; border: none; font-weight: 700; background: var(--primary); color: #fff;">Get Alerted</button>
+          </form>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">K</div>
+          <span style="font-weight: 800;">KHC <span style="font-weight: 500; color: var(--primary);">Finds</span></span>
+        </a>
+        <p>Discover viral gadgets, life-saving AI tools, and budget-friendly Amazon finds curated for developers, students, and creators in India.</p>
+        
+        <!-- Newsletter subscription -->
+        <div class="newsletter-title">Join our newsletter for weekly deal alerts</div>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="Enter your email" required id="newsletter-email">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#explore">All Products</a></li>
+          <li><a href="#explore">Top Rated</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Affiliate Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Partnership Disclosure box -->
+    <div class="container disclosure-box">
+      <div class="disclosure-title">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>AFFILIATE PARTNERSHIP DISCLOSURE</span>
+      </div>
+      <p>KHC Finds is a participant in affiliate advertising programs, including the Amazon Services LLC Associates Program, TravelPayouts, Impact Radius, and other networks. We suggest products that we believe offer real value. When you click on links and buy products through our site, we earn a small commission at zero extra cost to you. This support helps keep our platform running fast and ad-free.</p>
+    </div>
+
+    <!-- Bottom sub-footer -->
+    <div class="container sub-footer">
+      <div>&copy; 2026 KHC Finds. All rights reserved.</div>
+      <div class="sub-footer-links">
+        <span>Made with ❤️ in India</span>
+        <a href="mailto:contact@khcfinds.com" aria-label="Mail Us">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Detail Drawer Modal Overlay -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close Modal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <!-- Left Part: Image and Checkout actions -->
+      <div class="modal-left">
+        <div class="modal-img-container">
+          <img id="modal-img" src="" alt="">
+        </div>
+        
+        <div class="glass-panel" style="padding: 15px; margin-bottom: 15px; background: var(--bg-primary);">
+          <div style="font-size: 0.6875rem; color: var(--text-muted); margin-bottom: 2px;">Deal Price</div>
+          <div class="price-box">
+            <span class="current-price" id="modal-price" style="font-size: 1.75rem;">₹0</span>
+            <span class="original-price" id="modal-original-price" style="font-size: 0.875rem;">₹0</span>
+          </div>
+        </div>
+
+        <a href="" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="modal-buy-link" style="justify-content: center; padding: 14px; font-weight: 800; border-radius: 14px; width: 100%;">
+          <span>Grab Deal & Checkout</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polygon>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+
+        <!-- Coupon code copy block -->
+        <div class="coupon-box" id="modal-coupon-box" style="margin-top: 15px; border-radius: 12px; display: none;">
+          <span>Code: <span id="modal-coupon-code" style="background: rgba(245, 158, 11, 0.15); padding: 2px 6px; border-radius: 4px; font-family: monospace;"></span></span>
+          <span id="modal-coupon-copy-btn" style="background: rgba(245, 158, 11, 0.25); padding: 4px 8px; border-radius: 6px; text-transform: uppercase; font-size: 7px; font-weight: 900;">Copy</span>
+        </div>
+      </div>
+
+      <!-- Right Part: Title, Desc, Specifications, Pros/Cons -->
+      <div class="modal-right">
+        <div class="modal-header-meta">
+          <span id="modal-category">Category</span>
+          <span class="separator">•</span>
+          <span style="display: flex; align-items: center; gap: 3px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--amber)" stroke="var(--amber)" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span id="modal-rating">0.0</span> Rating
+          </span>
+        </div>
+
+        <h2 class="modal-title" id="modal-title">Product Title</h2>
+        
+        <p class="modal-text" id="modal-desc">Short description excerpt goes here.</p>
+        <p class="modal-text-long" id="modal-long-desc">Detailed reviews and long descriptions go here.</p>
+
+        <!-- Specifications -->
+        <div class="modal-specifications" id="modal-specs-container" style="display: none;">
+          <h4 class="spec-title">Specifications</h4>
+          <div class="spec-table" id="modal-specs-table">
+            <!-- Populated dynamically via app.js -->
+          </div>
+        </div>
+
+        <!-- Pros and Cons -->
+        <div class="pros-cons-grid">
+          <div class="pros-box" id="modal-pros-container" style="display: none;">
+            <span class="box-title">Pros</span>
+            <ul class="box-list" id="modal-pros-list"></ul>
+          </div>
+          <div class="cons-box" id="modal-cons-container" style="display: none;">
+            <span class="box-title">Cons</span>
+            <ul class="box-list" id="modal-cons-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Database & App Scripts -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
