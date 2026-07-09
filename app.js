@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- DOM Elements ---
   const header = document.getElementById("main-header");
-  const themeToggle = document.getElementById("theme-toggle");
   const searchInput = document.getElementById("search-input");
   const categoryContainer = document.getElementById("category-filter-list");
   const tagContainer = document.getElementById("tag-filter-list");
@@ -45,21 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalProsList = document.getElementById("modal-pros-list");
   const modalConsContainer = document.getElementById("modal-cons-container");
   const modalConsList = document.getElementById("modal-cons-list");
-
-  // --- Initial Theme Set ---
-  const savedTheme = localStorage.getItem("khc-theme") || "dark";
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-  } else {
-    document.body.classList.remove("dark");
-  }
-
-  // --- Theme Toggle Action ---
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    const isDark = document.body.classList.contains("dark");
-    localStorage.setItem("khc-theme", isDark ? "dark" : "light");
-  });
 
   // --- Header Scroll Effect ---
   window.addEventListener("scroll", () => {

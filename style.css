@@ -35,31 +35,7 @@
   --radius-xl: 30px;
 }
 
-/* Dark Theme overrides */
-body.dark {
-  --bg-primary: #09090b;
-  --bg-secondary: #121216;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  
-  --primary: #8b5cf6;
-  --primary-hover: #7c3aed;
-  --primary-glow: rgba(139, 92, 246, 0.25);
-  
-  --emerald: #34d399;
-  --emerald-bg: rgba(52, 211, 153, 0.08);
-  --rose: #fb7185;
-  --rose-bg: rgba(251, 113, 133, 0.08);
-  --amber: #fbbf24;
-  --amber-bg: rgba(251, 191, 36, 0.08);
-  
-  --border-light: rgba(255, 255, 255, 0.06);
-  --border-accent: rgba(139, 92, 246, 0.3);
-  
-  --card-shadow: 0 4px 30px -10px rgba(0, 0, 0, 0.4);
-  --modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
+
 
 /* Reset and Layout Base */
 * {
