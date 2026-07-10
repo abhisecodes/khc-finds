@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const productsGrid = document.getElementById("products-grid");
   const categoryFilters = document.getElementById("category-filters");
   const searchInput = document.getElementById("search-input");
+  const searchTrending = document.getElementById("search-trending");
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const navMenu = document.getElementById("nav-menu");
 
@@ -195,10 +196,40 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Search input handler
-  if (searchInput) {
+  if (searchInput && searchTrending) {
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
       renderCatalog();
+      // Hide trending once user starts typing custom queries
+      if (searchQuery.length > 0) {
+        searchTrending.classList.remove("active");
+      } else {
+        searchTrending.classList.add("active");
+      }
+    });
+
+    searchInput.addEventListener("focus", () => {
+      if (searchInput.value.trim() === "") {
+        searchTrending.classList.add("active");
+      }
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!searchInput.contains(e.target) && !searchTrending.contains(e.target)) {
+        searchTrending.classList.remove("active");
+      }
+    });
+
+    // Quick trending filter action
+    searchTrending.querySelectorAll(".trending-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const query = item.getAttribute("data-search");
+        searchInput.value = query;
+        searchQuery = query.toLowerCase().trim();
+        renderCatalog();
+        searchTrending.classList.remove("active");
+      });
     });
   }
 

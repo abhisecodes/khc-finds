@@ -180,6 +180,7 @@ nav.nav-menu a {
   padding: 0 12px;
   height: 40px;
   border-radius: 8px;
+  position: relative;
 }
 
 .search-input {
@@ -191,6 +192,78 @@ nav.nav-menu a {
   outline: none;
   color: var(--text-primary);
   padding-left: 8px;
+}
+
+/* --- Search Trending Dropdown --- */
+.search-trending-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  z-index: 100;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.search-trending-dropdown.active {
+  display: block;
+  animation: dropdownFadeIn 0.15s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.trending-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.trending-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trending-item {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 12.5px;
+  color: var(--text-primary);
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.12s ease;
+  text-align: left;
+}
+
+.trending-item:hover {
+  background-color: var(--image-bg);
+}
+
+.trending-tag {
+  font-size: 9px;
+  font-weight: 700;
+  color: #DC2626;
+  background-color: #FEE2E2;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
 }
 
 /* --- Modern Buttons --- */

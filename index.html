@@ -55,7 +55,22 @@
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="search-input" placeholder="Search catalog..." class="search-input" aria-label="Search catalog">
+        <input type="text" id="search-input" placeholder="Search catalog..." class="search-input" aria-label="Search catalog" autocomplete="off">
+        
+        <!-- Trending Dropdown -->
+        <div class="search-trending-dropdown" id="search-trending">
+          <div class="trending-title">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            TRENDING SEARCHES
+          </div>
+          <div class="trending-list">
+            <div class="trending-item" data-search="Nothing Ear">Nothing Ear (a) <span class="trending-tag">🔥 Trending</span></div>
+            <div class="trending-item" data-search="Balolo">Balolo Setup Cockpit <span class="trending-tag">⚡ Hot</span></div>
+            <div class="trending-item" data-search="Keychron">Keychron K2 Keyboard <span class="trending-tag">🔥 Trending</span></div>
+            <div class="trending-item" data-search="Muji">Muji Aroma Diffuser <span class="trending-tag">⚡ Popular</span></div>
+            <div class="trending-item" data-search="Peak Design">Peak Design Backpack <span class="trending-tag">🔥 Trending</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -178,7 +193,7 @@
       <div class="footer-links" id="about">
         <a href="#about"><strong>About:</strong> Independent product curators based in India.</a>
         <a href="#disclosure" id="disclosure"><strong>Disclosure:</strong> We participate in the Amazon India Affiliate Program.</a>
-        <a href="#contact" id="contact"><strong>Contact:</strong> editor@khcfinds.com</a>
+        <a href="mailto:abrepy@gmail.com" id="contact"><strong>Contact:</strong> abrepy@gmail.com (Direct Founders Inbox)</a>
       </div>
     </div>
     
