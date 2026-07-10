@@ -769,6 +769,14 @@ footer.app-footer {
   }
 }
 
+/* --- Top Utility Bar (Search & Promo) --- */
+.top-utility-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
 /* --- Announcement Banner --- */
 .announcement-bar {
   background-color: var(--image-bg);
@@ -779,7 +787,27 @@ footer.app-footer {
   font-weight: 600;
   font-size: 13px;
   text-align: center;
-  margin-top: 16px;
-  margin-bottom: 8px;
   color: var(--text-primary);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Responsive adjustment for top utility bar on tablet and desktop */
+@media (min-width: 768px) {
+  .top-utility-bar {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    margin-top: 24px !important;
+  }
+
+  .search-wrapper {
+    max-width: 380px !important;
+  }
+
+  .announcement-bar {
+    flex-grow: 1 !important;
+    text-align: center !important;
+  }
 }
