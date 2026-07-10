@@ -1,460 +1,284 @@
 // =========================================================================
-// KHC Finds - Client Application Logic (Vanilla JS)
+// KHC Finds - Modern Mobile-App Style Client Application
 // =========================================================================
 
+const categories = [
+  { id: "cat-workspace", name: "Workspace", slug: "workspace" },
+  { id: "cat-audio", name: "Audio", slug: "audio" },
+  { id: "cat-carry", name: "Carry", slug: "carry" },
+  { id: "cat-objects", name: "Objects", slug: "objects" }
+];
+
+const products = [
+  {
+    id: "prod-ear-a",
+    title: "Nothing Ear (a)",
+    brand: "Nothing",
+    category: "cat-audio",
+    price: 7999,
+    oldPrice: 9999,
+    affiliateUrl: "https://www.amazon.in/dp/B0D1Y9M8Q9",
+    image: "assets/products/nothing-ear-a-main.webp",
+    whyRecommend: "Iconic transparent aesthetics combined with rich high-res audio and robust ANC.",
+    overview: "Nothing Ear (a) offers active noise cancellation up to 45dB, LDAC high-res audio support, and a slim, pocketable transparent case.",
+    pros: ["Striking transparent case design", "Excellent bass response", "Comfortable fit"],
+    cons: ["No wireless charging"],
+    specifications: { "Driver": "11.6mm Dynamic", "ANC": "Up to 45dB", "Battery": "Up to 42.5h", "Bluetooth": "5.3" }
+  },
+  {
+    id: "prod-keychron-k2",
+    title: "Keychron K2 V2 Keyboard",
+    brand: "Keychron",
+    category: "cat-workspace",
+    price: 7499,
+    oldPrice: 8999,
+    affiliateUrl: "https://www.amazon.in/dp/B0875N542Q",
+    image: "assets/products/keychron-k2-main.webp",
+    whyRecommend: "The wireless mechanical keyboard benchmark for both Mac and Windows setups.",
+    overview: "A compact 75% layout mechanical keyboard featuring tactile Gateron switches, dual connectivity, and solid build quality.",
+    pros: ["Mac & Windows layouts included", "Long-lasting 4000mAh battery", "Satisfying tactile feedback"],
+    cons: ["High frame profile requires wrist rest"]
+  },
+  {
+    id: "prod-muji-diffuser",
+    title: "Muji Aroma Diffuser",
+    brand: "MUJI",
+    category: "cat-objects",
+    price: 3990,
+    oldPrice: 4990,
+    affiliateUrl: "https://www.amazon.in/dp/B00V42B8H6",
+    image: "assets/products/muji-diffuser-main.webp",
+    whyRecommend: "An ultrasonic mist diffuser that doubles as a warm ambient nightlight.",
+    overview: "Vaporizes water and essential oils using ultrasonic waves to create a soothing, fragrant mist inside minimalist living spaces.",
+    pros: ["Quiet operation", "Double-stage LED glow", "Clean cylindrical aesthetic"],
+    cons: ["Requires regular cleaning"]
+  },
+  {
+    id: "prod-balolo-cockpit",
+    title: "Balolo Setup Cockpit",
+    brand: "Balolo",
+    category: "cat-workspace",
+    price: 18999,
+    oldPrice: 22000,
+    affiliateUrl: "https://www.amazon.in/dp/B09HN5B7W1",
+    image: "assets/products/balolo-cockpit-main.webp",
+    whyRecommend: "Premium solid oak monitor stand with a modular rail organizer grid.",
+    overview: "Crafted in Germany from solid American oak and powder-coated steel to elevate screens and organize workspace peripherals.",
+    pros: ["Solid oak and steel build", "Modular accessory attachment system", "Improves posture"],
+    cons: ["Premium price segment"]
+  },
+  {
+    id: "prod-peakdesign-backpack",
+    title: "Peak Design Everyday Pack",
+    brand: "Peak Design",
+    category: "cat-carry",
+    price: 24999,
+    oldPrice: 28999,
+    affiliateUrl: "https://www.amazon.in/dp/B07Z8GNZLD",
+    image: "assets/products/peak-design-backpack-main.webp",
+    whyRecommend: "Highly configurable dividers and quick dual side panel access.",
+    overview: "Weatherproof 20L backpack made from 100% recycled 400D shell, designed for creators, commuters, and camera gears.",
+    pros: ["Configurable FlexFold dividers", "Top MagLatch closure is secure", "Weatherproof shell"],
+    cons: ["Slightly heavy empty frame"]
+  },
+  {
+    id: "prod-aesop-balm",
+    title: "Aesop Resurrection Balm",
+    brand: "Aesop",
+    category: "cat-objects",
+    price: 2999,
+    oldPrice: 3500,
+    affiliateUrl: "https://www.amazon.in/dp/B002K63CMM",
+    image: "assets/products/aesop-balm-main.webp",
+    whyRecommend: "A grease-free botanical formulation that softens cuticles and dry hands.",
+    overview: "Iconic amber tube containing mandarin rind, rosemary leaf, and cedarwood oil, recognized globally for modern bathroom design aesthetics.",
+    pros: ["Rich herbal citrus fragrance", "Non-sticky, quick-dry absorption", "Iconic visual packaging"],
+    cons: ["Fragile metal tube body"]
+  }
+];
+
 document.addEventListener("DOMContentLoaded", () => {
-  // --- App State ---
-  let currentProducts = [...products];
-  let selectedCategory = "";
-  let selectedTag = "";
-  let searchVal = "";
-  let sortBy = "trending";
-  let viewMode = "grid"; // 'grid' or 'list'
-  let wishlist = JSON.parse(localStorage.getItem("khc-wishlist") || "[]");
+  let activeCategory = "";
+  let searchQuery = "";
 
-  // --- DOM Elements ---
-  const header = document.getElementById("main-header");
+  const productsGrid = document.getElementById("products-grid");
+  const categoryFilters = document.getElementById("category-filters");
   const searchInput = document.getElementById("search-input");
-  const categoryContainer = document.getElementById("category-filter-list");
-  const tagContainer = document.getElementById("tag-filter-list");
-  const catalogCountInfo = document.getElementById("catalog-count-info");
-  const sortSelect = document.getElementById("sort-select");
-  const viewGridBtn = document.getElementById("view-grid-btn");
-  const viewListBtn = document.getElementById("view-list-btn");
-  const productContainer = document.getElementById("product-list-container");
-  
-  // Modal DOM
+  const mobileToggle = document.getElementById("mobile-menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+
+  // Modal elements
   const modal = document.getElementById("product-modal");
-  const modalCloseBtn = document.getElementById("modal-close-btn");
-  const modalImg = document.getElementById("modal-img");
-  const modalPrice = document.getElementById("modal-price");
-  const modalOriginalPrice = document.getElementById("modal-original-price");
-  const modalBuyLink = document.getElementById("modal-buy-link");
-  const modalCouponBox = document.getElementById("modal-coupon-box");
-  const modalCouponCode = document.getElementById("modal-coupon-code");
-  const modalCouponCopyBtn = document.getElementById("modal-coupon-copy-btn");
-  const modalCategory = document.getElementById("modal-category");
-  const modalRating = document.getElementById("modal-rating");
+  const modalClose = document.getElementById("modal-close");
+  const modalImage = document.getElementById("modal-img");
   const modalTitle = document.getElementById("modal-title");
-  const modalDesc = document.getElementById("modal-desc");
-  const modalLongDesc = document.getElementById("modal-long-desc");
-  const modalSpecsContainer = document.getElementById("modal-specs-container");
-  const modalSpecsTable = document.getElementById("modal-specs-table");
-  const modalProsContainer = document.getElementById("modal-pros-container");
-  const modalProsList = document.getElementById("modal-pros-list");
-  const modalConsContainer = document.getElementById("modal-cons-container");
-  const modalConsList = document.getElementById("modal-cons-list");
+  const modalBrand = document.getElementById("modal-brand");
+  const modalPrice = document.getElementById("modal-price");
+  const modalOldPrice = document.getElementById("modal-old-price");
+  const modalWhy = document.getElementById("modal-why");
+  const modalOverview = document.getElementById("modal-overview");
+  const modalPros = document.getElementById("modal-pros");
+  const modalCons = document.getElementById("modal-cons");
+  const modalCta = document.getElementById("modal-cta");
 
-  // --- Header Scroll Effect ---
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 20) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
-
-  // --- Populate Sidebar Filters ---
-  function initFilters() {
-    // 1. Categories
-    categoryContainer.innerHTML = `
-      <button class="filter-btn active" data-category="">
-        <span>📦</span>
-        <span>All Categories</span>
-      </button>
-    `;
-    categories.forEach(cat => {
-      categoryContainer.innerHTML += `
-        <button class="filter-btn" data-category="${cat.slug}">
-          <span>${cat.icon}</span>
-          <span>${cat.name}</span>
-        </button>
-      `;
-    });
-
-    // Category button click triggers
-    categoryContainer.addEventListener("click", (e) => {
-      const btn = e.target.closest(".filter-btn");
-      if (!btn) return;
-      
-      categoryContainer.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      selectedCategory = btn.dataset.category;
-      applyFilters();
-    });
-
-    // 2. Tags
-    tagContainer.innerHTML = `
-      <button class="tag-btn active" data-tag="">All</button>
-    `;
-    tags.forEach(tag => {
-      tagContainer.innerHTML += `
-        <button class="tag-btn" data-tag="${tag.slug}">#${tag.name}</button>
-      `;
-    });
-
-    // Tag button click triggers
-    tagContainer.addEventListener("click", (e) => {
-      const btn = e.target.closest(".tag-btn");
-      if (!btn) return;
-
-      tagContainer.querySelectorAll(".tag-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      selectedTag = btn.dataset.tag;
-      applyFilters();
-    });
+  // Format currency
+  function formatINR(price) {
+    return `₹${price.toLocaleString("en-IN")}`;
   }
 
-  // --- Render Products List/Grid ---
-  function renderProducts() {
-    productContainer.innerHTML = "";
+  // Render product catalog
+  function renderCatalog() {
+    productsGrid.innerHTML = "";
 
-    if (currentProducts.length === 0) {
-      productContainer.className = ""; // clear grid layout class
-      productContainer.innerHTML = `
-        <div class="glass-panel empty-state">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.3-4.3"></path>
-          </svg>
-          <h3>No products found</h3>
-          <p>We couldn't find anything matching your filters. Try search keywords or changing category tags.</p>
+    const filtered = products.filter(p => {
+      const matchCat = !activeCategory || p.category === activeCategory;
+      const matchSearch = !searchQuery || 
+        p.title.toLowerCase().includes(searchQuery) ||
+        p.brand.toLowerCase().includes(searchQuery) ||
+        p.whyRecommend.toLowerCase().includes(searchQuery);
+      return matchCat && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      productsGrid.innerHTML = `
+        <div class="empty-state">
+          <p>No products found. Try adjusting your search query.</p>
         </div>
       `;
       return;
     }
 
-    productContainer.className = viewMode === "grid" ? "products-grid" : "products-list";
-
-    currentProducts.forEach(product => {
-      const isSaved = wishlist.includes(product.id);
-      const discount = product.originalPrice
-        ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-        : 0;
-
-      const storeName = product.affiliateLink.includes("amazon")
-        ? "Amazon"
-        : product.affiliateLink.includes("flipkart")
-        ? "Flipkart"
-        : product.affiliateLink.includes("myntra")
-        ? "Myntra"
-        : "Partner Store";
-
-      const storeComparisonHtml = `
-        <div class="compare-row active">
-          <span>• ${storeName}</span>
-          <span>₹${product.price}</span>
+    filtered.forEach(p => {
+      const card = document.createElement("article");
+      card.className = "product-card";
+      card.innerHTML = `
+        <div class="card-image-container">
+          <img src="${p.image}" alt="${p.title}" loading="lazy">
         </div>
-        <div class="compare-row">
-          <span>• ${storeName === 'Amazon' ? 'Flipkart' : 'Amazon'}</span>
-          <span>₹${Math.round(product.price * 1.05)}</span>
+        <div class="card-details">
+          <span class="card-brand">${p.brand}</span>
+          <h3 class="card-title">${p.title}</h3>
+          <p class="card-why">"${p.whyRecommend}"</p>
+          <div class="card-footer">
+            <span class="card-price">${formatINR(p.price)}</span>
+            <button class="btn btn-action view-details-btn" data-id="${p.id}">View Analysis</button>
+          </div>
         </div>
       `;
-
-      const cardHtml = `
-        <article class="glass-card" data-id="${product.id}">
-          <div class="card-badges">
-            ${product.isFeatured ? '<span class="badge-featured">Featured</span>' : ''}
-            ${discount > 15 ? `<span class="badge-saving">🔥 ${discount}% Off</span>` : ''}
-          </div>
-
-          <div class="card-actions">
-            <button class="action-circle btn-share" title="Share Deal">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                <polyline points="16 6 12 2 8 6"></polyline>
-                <line x1="12" y1="2" x2="12" y2="15"></line>
-              </svg>
-            </button>
-            <button class="action-circle btn-wishlist ${isSaved ? 'saved' : ''}" title="Add to wishlist">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div class="product-img btn-details">
-            <img src="${product.imageUrl}" alt="${product.title}" loading="lazy">
-            <span class="store-tag">${storeName}</span>
-          </div>
-
-          <div class="card-body">
-            <div class="card-rating-price">
-              <div class="rating-box">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                <span>${product.rating}</span>
-              </div>
-              <div class="price-box">
-                ${product.originalPrice ? `<span class="original-price">₹${product.originalPrice}</span>` : ''}
-                <span class="current-price">₹${product.price}</span>
-              </div>
-            </div>
-
-            <h3 class="card-title btn-details">${product.title}</h3>
-            <p class="card-desc">${product.description}</p>
-
-            <div class="compare-box">
-              <span class="compare-title">Store comparison</span>
-              ${storeComparisonHtml}
-            </div>
-
-            ${product.couponCode ? `
-              <div class="coupon-box btn-coupon" data-coupon="${product.couponCode}">
-                <span>Code: <span style="background: rgba(245, 158, 11, 0.15); padding: 1px 4px; border-radius: 3px; font-family: monospace;">${product.couponCode}</span></span>
-                <span style="font-size: 7px; font-weight: 900; background: rgba(245,158,11,0.25); padding: 2px 4px; border-radius: 3px;">COPY</span>
-              </div>
-            ` : ''}
-
-            <div class="btn-grid">
-              <button class="btn-sm btn-secondary btn-details">Specs & Info</button>
-              <a href="${product.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-primary">
-                <span>Buy at ${storeName}</span>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-      `;
-      productContainer.innerHTML += cardHtml;
+      productsGrid.appendChild(card);
     });
 
-    catalogCountInfo.innerHTML = `Showing <span>${currentProducts.length}</span> finds`;
-  }
-
-  // --- Filtering & Sorting Controller ---
-  function applyFilters() {
-    let filtered = [...products];
-
-    // 1. Search Query text match
-    if (searchVal.trim()) {
-      const q = searchVal.toLowerCase();
-      filtered = filtered.filter(p => 
-        p.title.toLowerCase().includes(q) ||
-        p.description.toLowerCase().includes(q) ||
-        p.longDescription.toLowerCase().includes(q)
-      );
-    }
-
-    // 2. Category selection matches
-    if (selectedCategory) {
-      filtered = filtered.filter(p => p.categoryId === selectedCategory);
-    }
-
-    // 3. Tag selection matches
-    if (selectedTag) {
-      filtered = filtered.filter(p => p.tags.includes(selectedTag));
-    }
-
-    // 4. Sort dropdown
-    if (sortBy === "trending") {
-      filtered.sort((a, b) => b.trendingScore - a.trendingScore);
-    } else if (sortBy === "newest") {
-      filtered.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    } else if (sortBy === "highest_rated") {
-      filtered.sort((a, b) => b.rating - a.rating);
-    }
-
-    currentProducts = filtered;
-    renderProducts();
-  }
-
-  // --- Modal Specifications rendering ---
-  function openModal(product) {
-    modalImg.src = product.imageUrl;
-    modalImg.alt = product.title;
-    modalPrice.innerText = `₹${product.price}`;
-    
-    if (product.originalPrice) {
-      modalOriginalPrice.innerText = `₹${product.originalPrice}`;
-      modalOriginalPrice.style.display = "inline";
-    } else {
-      modalOriginalPrice.style.display = "none";
-    }
-
-    modalBuyLink.href = product.affiliateLink;
-    const catObj = categories.find(c => c.id === product.categoryId);
-    modalCategory.innerText = catObj ? catObj.name : "Product";
-    modalRating.innerText = product.rating;
-    modalTitle.innerText = product.title;
-    modalDesc.innerText = product.description;
-    modalLongDesc.innerText = product.longDescription;
-
-    // Coupon block
-    if (product.couponCode) {
-      modalCouponBox.style.display = "flex";
-      modalCouponCode.innerText = product.couponCode;
-      modalCouponCopyBtn.innerText = "Copy";
-      modalCouponCopyBtn.style.background = "rgba(245, 158, 11, 0.25)";
-      modalCouponBox.dataset.coupon = product.couponCode;
-    } else {
-      modalCouponBox.style.display = "none";
-    }
-
-    // Spec sheets
-    if (product.specifications && Object.keys(product.specifications).length > 0) {
-      modalSpecsContainer.style.display = "block";
-      modalSpecsTable.innerHTML = "";
-      Object.entries(product.specifications).forEach(([key, val]) => {
-        modalSpecsTable.innerHTML += `
-          <div class="spec-item">
-            <span class="spec-key">${key}</span>
-            <span class="spec-val">${val}</span>
-          </div>
-        `;
+    // Attach listeners
+    document.querySelectorAll(".view-details-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-id");
+        openProductModal(id);
       });
+    });
+  }
+
+  // Populate category filters
+  function initCategories() {
+    categoryFilters.innerHTML = `<button class="filter-btn active" data-category="">All Items</button>`;
+    categories.forEach(cat => {
+      categoryFilters.innerHTML += `<button class="filter-btn" data-category="${cat.id}">${cat.name}</button>`;
+    });
+
+    categoryFilters.addEventListener("click", (e) => {
+      if (e.target.classList.contains("filter-btn")) {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        e.target.classList.add("active");
+        activeCategory = e.target.getAttribute("data-category");
+        renderCatalog();
+      }
+    });
+  }
+
+  // Search input handler
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderCatalog();
+    });
+  }
+
+  // Mobile navigation drawer toggle
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    // Close on link click
+    navMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+      });
+    });
+  }
+
+  // Modal actions
+  function openProductModal(id) {
+    const p = products.find(prod => prod.id === id);
+    if (!p) return;
+
+    modalImage.src = p.image;
+    modalTitle.textContent = p.title;
+    modalBrand.textContent = p.brand;
+    modalPrice.textContent = formatINR(p.price);
+    
+    if (p.oldPrice) {
+      modalOldPrice.textContent = formatINR(p.oldPrice);
+      modalOldPrice.style.display = "inline";
     } else {
-      modalSpecsContainer.style.display = "none";
+      modalOldPrice.style.display = "none";
     }
+
+    modalWhy.textContent = `"${p.whyRecommend}"`;
+    modalOverview.textContent = p.overview;
 
     // Pros
-    if (product.pros && product.pros.length > 0) {
-      modalProsContainer.style.display = "block";
-      modalProsList.innerHTML = "";
-      product.pros.forEach(pro => {
-        modalProsList.innerHTML += `<li>${pro}</li>`;
+    modalPros.innerHTML = "";
+    if (p.pros) {
+      p.pros.forEach(pro => {
+        const li = document.createElement("li");
+        li.textContent = pro;
+        modalPros.appendChild(li);
       });
-    } else {
-      modalProsContainer.style.display = "none";
     }
 
     // Cons
-    if (product.cons && product.cons.length > 0) {
-      modalConsContainer.style.display = "block";
-      modalConsList.innerHTML = "";
-      product.cons.forEach(con => {
-        modalConsList.innerHTML += `<li>${con}</li>`;
+    modalCons.innerHTML = "";
+    if (p.cons) {
+      p.cons.forEach(con => {
+        const li = document.createElement("li");
+        li.textContent = con;
+        modalCons.appendChild(li);
       });
-    } else {
-      modalConsContainer.style.display = "none";
     }
+
+    modalCta.href = p.affiliateUrl;
 
     modal.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevent background scroll
   }
 
-  function closeModal() {
+  function closeProductModal() {
     modal.classList.remove("active");
+    document.body.style.overflow = ""; // Re-enable background scroll
   }
 
-  // --- Event Listeners Bindings ---
+  if (modalClose) {
+    modalClose.addEventListener("click", closeProductModal);
+  }
 
-  // Search input typing
-  searchInput.addEventListener("input", (e) => {
-    searchVal = e.target.value;
-    applyFilters();
-  });
-
-  // Sort select dropdown changes
-  sortSelect.addEventListener("change", (e) => {
-    sortBy = e.target.value;
-    applyFilters();
-  });
-
-  // Layout View mode switch
-  viewGridBtn.addEventListener("click", () => {
-    viewGridBtn.classList.add("active");
-    viewListBtn.classList.remove("active");
-    viewMode = "grid";
-    renderProducts();
-  });
-
-  viewListBtn.addEventListener("click", () => {
-    viewListBtn.classList.add("active");
-    viewGridBtn.classList.remove("active");
-    viewMode = "list";
-    renderProducts();
-  });
-
-  // Global click listeners inside list container
-  productContainer.addEventListener("click", (e) => {
-    const card = e.target.closest(".glass-card");
-    if (!card) return;
-    const productId = card.dataset.id;
-    const product = products.find(p => p.id === productId);
-
-    // Click on details triggers
-    if (e.target.closest(".btn-details")) {
-      e.preventDefault();
-      openModal(product);
-      return;
-    }
-
-    // Click on share trigger
-    if (e.target.closest(".btn-share")) {
-      e.preventDefault();
-      const shareUrl = `${window.location.origin}/#details-${product.slug}`;
-      navigator.clipboard.writeText(shareUrl);
-      alert("Product share link copied to clipboard!");
-      return;
-    }
-
-    // Click on wishlist toggling
-    if (e.target.closest(".btn-wishlist")) {
-      e.preventDefault();
-      const wlBtn = e.target.closest(".btn-wishlist");
-      const idx = wishlist.indexOf(productId);
-      if (idx > -1) {
-        wishlist.splice(idx, 1);
-        wlBtn.classList.remove("saved");
-      } else {
-        wishlist.push(productId);
-        wlBtn.classList.add("saved");
-      }
-      localStorage.setItem("khc-wishlist", JSON.stringify(wishlist));
-      return;
-    }
-
-    // Click on coupon copy
-    if (e.target.closest(".btn-coupon")) {
-      const couponCode = e.target.closest(".btn-coupon").dataset.coupon;
-      navigator.clipboard.writeText(couponCode);
-      alert(`Coupon code "${couponCode}" copied successfully!`);
-    }
-  });
-
-  // Modal actions binding
-  modalCloseBtn.addEventListener("click", closeModal);
+  // Close modal when clicking outside the content block
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
+    if (e.target === modal) {
+      closeProductModal();
+    }
   });
 
-  // Modal coupon copy button
-  modalCouponCopyBtn.addEventListener("click", () => {
-    const code = modalCouponBox.dataset.coupon;
-    navigator.clipboard.writeText(code);
-    modalCouponCopyBtn.innerText = "COPIED!";
-    modalCouponCopyBtn.style.background = "var(--emerald)";
-    setTimeout(() => {
-      modalCouponCopyBtn.innerText = "COPY";
-      modalCouponCopyBtn.style.background = "rgba(245, 158, 11, 0.25)";
-    }, 2000);
-  });
-
-  // Newsletter form submission
-  document.getElementById("newsletter-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.getElementById("newsletter-email").value;
-    alert(`Thank you for subscribing with: ${email}! We'll notify you of deals.`);
-    document.getElementById("newsletter-email").value = "";
-  });
-
-  // Coming Soon newsletter form submission
-  const comingSoonForm = document.getElementById("coming-soon-newsletter");
-  if (comingSoonForm) {
-    comingSoonForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("coming-soon-email").value;
-      alert(`Thank you! We will alert you at: ${email} when more curated products go live.`);
-      document.getElementById("coming-soon-email").value = "";
-    });
-  }
-
-  // --- App Initialization Execution ---
-  initFilters();
-  applyFilters();
+  // Init App
+  initCategories();
+  renderCatalog();
 });
