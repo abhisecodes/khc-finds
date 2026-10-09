@@ -5,14 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>KHC Finds — Curated Discoveries</title>
-  <meta name="description" content="Discover functional, beautifully designed objects that elevate daily life. Handpicked selections.">
+  <title>KHC Finds — Curated Discoveries & Technology Journal</title>
+  <meta name="description" content="Discover functional, beautifully designed objects that elevate daily life. Handpicked technology selections, verified Amazon festive deals, and editorial buying guides.">
+  <link rel="canonical" href="https://khc-finds.vercel.app/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KHC Finds — Curated Discoveries & Technology Journal">
+  <meta property="og:description" content="Discover functional, beautifully designed objects that elevate daily life. Handpicked technology selections and editorial buying guides.">
+  <meta property="og:url" content="https://khc-finds.vercel.app/">
+  <meta property="og:image" content="https://khc-finds.vercel.app/assets/storefront.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KHC Finds — Curated Discoveries & Technology Journal">
+  <meta name="twitter:description" content="Curated discoveries engineered for clarity. Handpicked technology selections and editorial buying guides.">
+  <meta name="twitter:image" content="https://khc-finds.vercel.app/assets/storefront.png">
+
+  <!-- Google Search Console Verification Placeholder (Uncomment and insert code once ready) -->
+  <!-- <meta name="google-site-verification" content="GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN_PLACEHOLDER"> -->
+
+  <!-- Google Analytics 4 Placeholder (Uncomment and insert Measurement ID once ready) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
 
   <!-- Favicon / Tab Icon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230F172A'/><text x='50%' y='68%' font-family='system-ui, sans-serif' font-weight='800' font-size='52' fill='%23FFFFFF' text-anchor='middle'>K</text></svg>">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -21,17 +49,17 @@
     <div class="container nav-container">
       
       <!-- Brand Logo -->
-      <a href="#" class="logo">KHC <span>Finds</span></a>
+      <a href="/" class="logo">KHC <span>Finds</span></a>
 
       <!-- Desktop Nav links -->
       <nav class="nav-menu" id="nav-menu">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#catalog">Finds</a></li>
-          <li><a href="#articles">Journal & Guides</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#disclosure">Disclosure</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/products/">Products</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/news/">Tech News</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/disclosure/">Disclosure</a></li>
         </ul>
       </nav>
 
@@ -90,10 +118,13 @@
       <span class="hero-subtitle">Amazon Festive Deals • Curated Finds</span>
       <h1 class="hero-title">Objects engineered for clarity.</h1>
       <p class="hero-desc">We track genuine festive price drops on Amazon India to bring you verified, functional finds worth owning.</p>
-      <div class="hero-cta-wrapper" style="margin-top: 16px;">
-        <a href="#catalog" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+      <div class="hero-cta-wrapper" style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="https://link.amazon/B06dIjcHg" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-          Explore Curated Deals
+          Explore Curated Deals &rarr;
+        </a>
+        <a href="#catalog" class="btn btn-action" style="display: inline-flex; align-items: center; gap: 6px;">
+          View Catalog &darr;
         </a>
       </div>
     </section>
@@ -115,10 +146,13 @@
 
     <!-- Journal & Blog Articles Section -->
     <section class="journal-section" id="articles">
-      <div class="section-header journal-header">
-        <span class="hero-subtitle">Editorial & In-Depth Guides</span>
-        <h2 class="section-title">The Journal</h2>
-        <p class="journal-desc">Long-form buying guides, setup philosophy, and genuine breakdowns of our curated finds.</p>
+      <div class="section-header journal-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <span class="hero-subtitle">Editorial & In-Depth Guides</span>
+          <h2 class="section-title">The Journal</h2>
+          <p class="journal-desc">Long-form buying guides, setup philosophy, and genuine breakdowns of our curated finds.</p>
+        </div>
+        <a href="/blog/" class="btn btn-action" style="white-space: nowrap;">Explore Full Journal &rarr;</a>
       </div>
       <div class="articles-grid" id="articles-grid">
         <!-- Loaded Dynamically by app.js -->
@@ -163,6 +197,7 @@
               <span class="modal-oldprice-val" id="modal-old-price">₹0</span>
               <span class="modal-discount-badge" id="modal-discount-badge" style="display: none;">0% OFF</span>
             </div>
+            <p class="modal-price-note" style="margin-top: 4px; font-size: 11px; color: var(--color-text-secondary); line-height: 1.35;">*Prices fluctuate on Amazon. Click below to view live pricing, coupons & bank offers.</p>
 
             <div class="modal-recommendation-box" style="margin-top: 16px;">
               <p class="rec-badge-label" style="font-size: 10px; font-weight: 800; color: var(--accent-color); margin-bottom: 4px; text-transform: uppercase;">Why We Recommend It</p>
@@ -191,8 +226,11 @@
             </div>
           </div>
 
-          <a href="" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full modal-cta-btn" id="modal-cta">
-            Buy on Amazon India &rarr;
+          <a href="" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-full modal-cta-btn" id="modal-cta">
+            Check Current Price on Amazon &rarr;
+          </a>
+          <a href="" class="btn btn-action btn-full" id="modal-page-link" style="margin-top: 8px; font-size: 12px; height: 36px; display: flex; align-items: center; justify-content: center;">
+            View Dedicated Specifications Page &rarr;
           </a>
           <p class="disclosure-notice" style="margin-top: 8px; font-size: 10px; text-align: center;">KHC Finds is an Amazon India Affiliate Partner. We may receive referral credits at zero extra cost to you.</p>
         </div>
@@ -237,16 +275,17 @@
         <p>Curating functional, beautiful goods worth owning.</p>
       </div>
 
-      <div class="footer-links" id="about">
-        <a href="#about"><strong>About:</strong> Independent product curators based in India.</a>
-        <a href="#disclosure" id="disclosure"><strong>Disclosure:</strong> We participate in the Amazon India Affiliate Program.</a>
-        <a href="mailto:abrepy@gmail.com" id="contact"><strong>Contact:</strong> abrepy@gmail.com (Direct Founders Inbox)</a>
+      <div class="footer-links">
+        <a href="/about/"><strong>About:</strong> Independent product curators based in India.</a>
+        <a href="/disclosure/"><strong>Disclosure:</strong> Verified Amazon India Affiliate Partner.</a>
+        <a href="/contact/"><strong>Contact:</strong> Editorial team & founders inbox.</a>
+        <a href="/privacy/"><strong>Privacy Policy:</strong> Reader privacy & cookies.</a>
       </div>
     </div>
     
     <div class="container" style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; margin-top: 12px; text-align: left;">
       <p style="font-size: 11px; opacity: 0.7; line-height: 1.6; color: #ced4da;">
-        <strong>AFFILIATE PARTNERSHIP DISCLOSURE:</strong> KHC Finds is a participant in the Amazon Services LLC Associates Program. We suggest products that we believe offer real value. When you click on links and buy products through our site, we earn a small commission at zero extra cost to you. We currently partner exclusively with Amazon.in and are trying our best to partner with more networks in the future.
+        <strong>AFFILIATE PARTNERSHIP DISCLOSURE:</strong> KHC Finds is a participant in the Amazon Services LLC Associates Program. We suggest products that we believe offer real value. When you click on links and buy products through our site, we earn a small commission at zero extra cost to you. Product prices and availability are accurate as of publication and are subject to change; any price and availability displayed on Amazon.in at the time of purchase will apply.
       </p>
     </div>
 
@@ -257,7 +296,8 @@
     </div>
   </footer>
 
-  <!-- Main JavaScript File -->
+  <!-- Navigation & Main JavaScript -->
+  <script src="nav.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

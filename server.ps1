@@ -59,6 +59,17 @@ while ($true) {
         $relPath = [System.Uri]::UnescapeDataString($url.TrimStart('/'))
         $filePath = Join-Path $rootDir $relPath
 
+        if (Test-Path $filePath -PathType Container) {
+            $indexPath = Join-Path $filePath "index.html"
+            if (Test-Path $indexPath -PathType Leaf) {
+                $filePath = $indexPath
+            }
+        } elseif (-not (Test-Path $filePath -PathType Leaf)) {
+            if (Test-Path "$filePath.html" -PathType Leaf) {
+                $filePath = "$filePath.html"
+            }
+        }
+
         if (Test-Path $filePath -PathType Leaf) {
             $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
             $mime = if ($mimeTypes.ContainsKey($ext)) { $mimeTypes[$ext] } else { "application/octet-stream" }

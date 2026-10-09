@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Curated Product Catalog — KHC Finds</title>
+  <meta name="description" content="Explore verified technology deals, ergonomic desk hardware, Smart TVs, and daily carry items tracked and tested by KHC Finds. Direct Amazon India links.">
+  <link rel="canonical" href="https://khc-finds.vercel.app/products/">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Curated Product Catalog — KHC Finds">
+  <meta property="og:description" content="Explore verified technology deals, ergonomic desk hardware, Smart TVs, and daily carry items tracked by KHC Finds.">
+  <meta property="og:url" content="https://khc-finds.vercel.app/products/">
+  <meta property="og:image" content="https://khc-finds.vercel.app/assets/storefront.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Curated Product Catalog — KHC Finds">
+  <meta name="twitter:description" content="Explore verified technology deals, ergonomic desk hardware, Smart TVs, and daily carry items tracked by KHC Finds.">
+  <meta name="twitter:image" content="https://khc-finds.vercel.app/assets/storefront.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230F172A'/><text x='50%' y='68%' font-family='system-ui, sans-serif' font-weight='800' font-size='52' fill='%23FFFFFF' text-anchor='middle'>K</text></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Sticky App Header -->
+  <header class="app-header">
+    <div class="container nav-container">
+      <a href="/" class="logo">KHC <span>Finds</span></a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/products/" class="active">Products</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/news/">Tech News</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/disclosure/">Disclosure</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions-wrapper">
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="container" style="padding-top: 24px; padding-bottom: 64px;">
+    
+    <!-- Top Utility Bar (Search & Live Sale banner) -->
+    <div class="top-utility-bar">
+      <div class="search-wrapper">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search verified catalog..." class="search-input" aria-label="Search catalog" autocomplete="off">
+        
+        <!-- Trending Dropdown -->
+        <div class="search-trending-dropdown" id="search-trending">
+          <div class="trending-title">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            TRENDING SEARCHES
+          </div>
+          <div class="trending-list">
+            <div class="trending-item" data-search="LG">LG 43" Nano 4K TV <span class="trending-tag">🔥 Trending</span></div>
+            <div class="trending-item" data-search="Samsung Mini LED">Samsung 43" Mini LED <span class="trending-tag">⚡ Hot</span></div>
+            <div class="trending-item" data-search="Philips">Philips 43" QLED TV <span class="trending-tag">🔥 Popular</span></div>
+            <div class="trending-item" data-search="Curved Monitor">Samsung 24" Curved Monitor <span class="trending-tag">⚡ Hot Deal</span></div>
+            <div class="trending-item" data-search="Logitech">Logitech MK215 Combo <span class="trending-tag">🔥 Best Seller</span></div>
+            <div class="trending-item" data-search="Wesley">Wesley Luxur 45L Backpack <span class="trending-tag">⚡ 77% OFF</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="announcement-bar">
+        <span class="announcement-pill">🔥 Live Deals</span>
+        <span>Verified Amazon.in festive price drops & genuine stock.</span>
+      </div>
+    </div>
+
+    <!-- Page Header -->
+    <div style="margin: 28px 0 20px 0;">
+      <span class="hero-subtitle">Catalog & Live Analysis</span>
+      <h1 class="section-title" style="margin-top: 4px; font-size: clamp(1.8rem, 4vw, 2.4rem);">Curated Product Discovery</h1>
+      <p style="font-size: 14.5px; color: var(--text-secondary); max-width: 680px; margin-top: 6px;">Every item is selected for functional utility, verified pricing, and longevity. Click any item for our full technical breakdown or to check direct live availability on Amazon India.</p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="category-scroller" id="category-filters">
+      <!-- Populated by app.js -->
+    </div>
+
+    <!-- Products Grid -->
+    <section class="catalog-section" id="catalog" style="padding-top: 16px;">
+      <div class="products-grid" id="products-grid">
+        <!-- Populated by app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Product Drawer Detail Modal -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-content">
+      
+      <!-- Modal Header -->
+      <div class="modal-header-row">
+        <div>
+          <span class="card-brand" id="modal-brand">Brand</span>
+          <h2 class="modal-title" id="modal-title">Product Title</h2>
+        </div>
+        <button class="modal-close-btn" id="modal-close" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        
+        <!-- Left: Image & Price -->
+        <div class="modal-img-col">
+          <div class="modal-img-wrapper">
+            <img id="modal-img" src="" alt="">
+          </div>
+        </div>
+
+        <!-- Right: Details -->
+        <div class="modal-details-col">
+          <div>
+            <div class="modal-meta-row">
+              <span class="modal-price-val" id="modal-price">₹0</span>
+              <span class="modal-oldprice-val" id="modal-old-price">₹0</span>
+              <span class="modal-discount-badge" id="modal-discount-badge" style="display: none;">0% OFF</span>
+            </div>
+            <p class="modal-price-note" style="margin-top: 4px; font-size: 11px; color: var(--color-text-secondary); line-height: 1.35;">*Prices fluctuate on Amazon. Click below to view live pricing, coupons & bank offers.</p>
+
+            <div class="modal-recommendation-box" style="margin-top: 16px;">
+              <p class="rec-badge-label" style="font-size: 10px; font-weight: 800; color: var(--accent-color); margin-bottom: 4px; text-transform: uppercase;">Why We Recommend It</p>
+              <p id="modal-why" style="font-style: italic; font-size: 13.5px;"></p>
+            </div>
+
+            <div class="overview-section" style="margin-top: 16px;">
+              <h4 class="modal-section-title">Overview</h4>
+              <p id="modal-overview" style="font-size: 13px;"></p>
+            </div>
+
+            <div class="specs-section" id="modal-specs-section" style="margin-top: 16px; display: none;">
+              <h4 class="modal-section-title">Key Specifications</h4>
+              <div class="modal-specs-grid" id="modal-specs"></div>
+            </div>
+
+            <div class="pros-cons-grid" style="margin-top: 16px;">
+              <div class="pros-col">
+                <h4 class="modal-section-title" style="color: #16A34A;">What We Loved</h4>
+                <ul class="modal-pros-list" id="modal-pros"></ul>
+              </div>
+              <div class="cons-col" style="margin-top: 8px;">
+                <h4 class="modal-section-title" style="color: #DC2626;">Considerations</h4>
+                <ul class="modal-cons-list" id="modal-cons"></ul>
+              </div>
+            </div>
+          </div>
+
+          <a href="" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-full modal-cta-btn" id="modal-cta">
+            Check Current Price on Amazon &rarr;
+          </a>
+          <a href="" class="btn btn-action btn-full" id="modal-page-link" style="margin-top: 8px; font-size: 12px; height: 36px; display: flex; align-items: center; justify-content: center;">
+            View Dedicated Specifications Page &rarr;
+          </a>
+          <p class="disclosure-notice" style="margin-top: 8px; font-size: 10px; text-align: center;">KHC Finds is an Amazon India Affiliate Partner. We may receive referral credits at zero extra cost to you.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h4>KHC Finds</h4>
+        <p>Curating functional, beautiful goods worth owning.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="/about/"><strong>About:</strong> Independent product curators based in India.</a>
+        <a href="/disclosure/"><strong>Disclosure:</strong> Verified Amazon India Affiliate Partner.</a>
+        <a href="/contact/"><strong>Contact:</strong> Editorial team & founders inbox.</a>
+        <a href="/privacy/"><strong>Privacy Policy:</strong> Reader privacy & cookies.</a>
+      </div>
+    </div>
+    
+    <div class="container" style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; margin-top: 12px; text-align: left;">
+      <p style="font-size: 11px; opacity: 0.7; line-height: 1.6; color: #ced4da;">
+        <strong>AFFILIATE PARTNERSHIP DISCLOSURE:</strong> KHC Finds is a participant in the Amazon Services LLC Associates Program. We suggest products that we believe offer real value. When you click on links and buy products through our site, we earn a small commission at zero extra cost to you. Product prices and availability are accurate as of publication and are subject to change; any price and availability displayed on Amazon.in at the time of purchase will apply.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="footer-bottom">
+        &copy; 2026 KHC Finds. Built for mobile responsive clarity.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

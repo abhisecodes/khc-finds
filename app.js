@@ -12,13 +12,14 @@ const categories = [
 const products = [
   {
     id: "prod-lg-43nu87",
+    pageUrl: "/products/lg-43nu87-ai-4k-tv/",
     title: "LG 108 cms (43 inches) NU87 AI Series Nano 4K Ultra HD (3840 x 2160) Smart webOS LED TV 43NU870BPLA 2026",
     brand: "LG",
     category: "cat-tv",
     price: 29990,
     oldPrice: 49990,
     affiliateUrl: "https://link.amazon/B0iUnT4dz",
-    image: "assets/products/lg-43nu87-tv.jpg",
+    image: "/assets/products/lg-43nu87-tv.jpg",
     whyRecommend: "Crisp NanoCell 4K color reproduction paired with next-gen α7 AI processing and immersive 9.1.2 virtual sound.",
     overview: "The LG 43NU870BPLA (2026 Edition) features a vivid 4K Ultra HD NanoCell display powered by LG's α7 AI Gen9 processor. Offering pure color filtration, AI Sound Pro with 9.1.2 virtual up-mixing, Dolby Atmos, and webOS 26 with integrated Gemini & Copilot AI assistance.",
     pros: [
@@ -42,13 +43,14 @@ const products = [
   },
   {
     id: "prod-philips-43pqt8100",
+    pageUrl: "/products/philips-43pqt8100-qled-tv/",
     title: "PHILIPS 109 cm (43 inches) 8100 Series 4K Ultra HD Smart QLED Google TV 43PQT8100/94",
     brand: "Philips",
     category: "cat-tv",
     price: 29999,
     oldPrice: 49990,
     affiliateUrl: "https://link.amazon/B0iJbJYxM",
-    image: "assets/products/philips-43pqt8100-tv.jpg",
+    image: "/assets/products/philips-43pqt8100-tv.jpg",
     whyRecommend: "Rich Quantum Dot QLED color depth, 120Hz HSR motion smoothing, and powerful 30W Dolby Atmos audio.",
     overview: "The Philips 8100 Series 43PQT8100 brings Quantum Dot (QLED) panel technology to the compact 43-inch class. Features Wider Color Gamut, 120Hz HSR (High Screen Refresh) for fluid gaming and sports, cinema-grade Dolby Vision & Dolby Atmos with punchy 30W stereo speakers, and Google TV with hands-free Google Assistant voice control.",
     pros: [
@@ -72,13 +74,14 @@ const products = [
   },
   {
     id: "prod-samsung-43-miniled",
+    pageUrl: "/products/samsung-43-miniled-4k-tv/",
     title: "Samsung 43 inch (108cm) Mini LED 4K Vision AI 2026 Smart TV | 30W Speakers | 4K Upscaling | Mini-LED HDR | 150+ Channels | 7 Years OS Upgrade | UA43M2EHAULXL",
     brand: "Samsung",
     category: "cat-tv",
     price: 33990,
     oldPrice: 49990,
     affiliateUrl: "https://link.amazon/B094wOMN9",
-    image: "assets/products/samsung-43-miniled-tv.jpg",
+    image: "/assets/products/samsung-43-miniled-tv.jpg",
     whyRecommend: "Flagship Mini-LED precision contrast combined with 7 years of guaranteed OS updates and Vision AI companion.",
     overview: "The Samsung UA43M2EHAULXL (2026 Edition) brings premium Mini-LED backlighting into the 43-inch form factor, achieving deep blacks and high contrast without backlight bleed. Equipped with Samsung's Vision AI Companion, neural 4K Upscaling, 30W speakers with Object Tracking Sound Lite, 150+ free live channels on Samsung TV Plus, and 7 years of guaranteed Tizen OS updates.",
     pros: [
@@ -102,13 +105,14 @@ const products = [
   },
   {
     id: "prod-logitech-mk215",
+    pageUrl: "/products/logitech-mk215-wireless-combo/",
     title: "Logitech MK215 Wireless Keyboard and Mouse Combo for Windows, 2.4 GHz Wireless, Compact Design, 2-Year Battery Life(Keyboard),5 Month Battery Life(Mouse) PC/Laptop- Black",
     brand: "Logitech",
     category: "cat-workspace",
     price: 1295,
     oldPrice: 1645,
     affiliateUrl: "https://link.amazon/B06T5QBlB",
-    image: "assets/products/logitech-mk215-combo.jpg",
+    image: "/assets/products/logitech-mk215-combo.jpg",
     whyRecommend: "Reliable plug-and-play 2.4 GHz wireless in a compact footprint with up to 2-year battery life.",
     overview: "Logitech MK215 is an ultra-compact wireless keyboard and mouse combo engineered for clutter-free workspaces. Featuring reliable 2.4 GHz wireless with a 10-meter range via a tiny USB receiver, 128-bit AES keyboard encryption, 36% smaller footprint than standard keyboards while retaining full keys and number pad, and incredible battery longevity (up to 24 months for keyboard, 5 months for mouse).",
     pros: [
@@ -132,13 +136,14 @@ const products = [
   },
   {
     id: "prod-samsung-24-curved",
+    pageUrl: "/products/samsung-24-curved-monitor/",
     title: "Samsung 24\" Curved Monitor|1800R Curved Screen|100Hz|4ms|SRGB 95%|Ports-HDMI,D-Sub,Headphone|Game Mode|EyeSaver Mode|16.7M Color Support|Flicker Free|Off Timer Plus|LS24D368GAWXXL|Black",
     brand: "Samsung",
     category: "cat-monitors",
     price: 7999,
     oldPrice: 13999,
     affiliateUrl: "https://link.amazon/B0a1fH9kj",
-    image: "assets/products/samsung-24-curved-monitor.jpg",
+    image: "/assets/products/samsung-24-curved-monitor.jpg",
     whyRecommend: "1800R natural eye curvature matched with fluid 100Hz refresh rate and 95% sRGB color accuracy.",
     overview: "The Samsung Essential Monitor S3 (LS24D368GAWXXL) delivers an immersive visual experience with an 1800R curved VA panel designed around the human eye contour. Features a fast 100Hz refresh rate for tear-free fluid motion, 95% sRGB color gamut for faithful color reproduction, Game Mode for optimized contrast, and Eye Saver Mode with Flicker-Free tech to eliminate eye fatigue during long desk sessions.",
     pros: [
@@ -162,13 +167,14 @@ const products = [
   },
   {
     id: "prod-wesley-luxur-backpack",
+    pageUrl: "/products/wesley-luxur-45l-travel-backpack/",
     title: "Wesley Luxur 45 Ltrs Overnighter Expandable Travel Laptop Backpack, Flight Cabin Approved Carry On with 16 inch Laptop Compartment, Anti Theft feature business/Travel/Weekender/college Charcoal Black",
     brand: "Wesley",
     category: "cat-carry",
     price: 699,
     oldPrice: 2999,
     affiliateUrl: "https://link.amazon/B0f1v3WK8",
-    image: "assets/products/wesley-luxur-backpack.jpg",
+    image: "/assets/products/wesley-luxur-backpack.jpg",
     whyRecommend: "Massive 45-liter expandable packing capacity, flight cabin approved, and dedicated 16-inch padded laptop vault.",
     overview: "The Wesley Luxur 45L Overnighter is an expandable multi-functional travel backpack designed to meet international airline cabin carry-on regulations. Built with durable water-resistant polyester fabric, it features an expandable main packing compartment with suitcase-style 180-degree flat opening, dedicated padded pocket for up to 16-inch laptops, anti-theft hidden pockets, breathable honeycomb back padding, and compression side straps.",
     pros: [
@@ -196,6 +202,7 @@ const products = [
 const articles = [
   {
     id: "art-tv-comparison-2026",
+    url: "/blog/43-inch-4k-tv-shootout-2026/",
     title: "The 2026 43-inch 4K Shootout: LG NanoCell vs Philips QLED vs Samsung Mini-LED",
     tag: "Buying Guide",
     date: "October 2026",
@@ -238,6 +245,7 @@ const articles = [
   },
   {
     id: "art-ergonomic-workspace-essentials",
+    url: "/blog/ergonomic-desk-blueprint/",
     title: "The Ergonomic Desk Blueprint: Curved Immersion & Wireless Simplicity",
     tag: "Setup Guide",
     date: "October 2026",
@@ -270,6 +278,7 @@ const articles = [
   },
   {
     id: "art-one-bag-travel-philosophy",
+    url: "/blog/one-bag-travel-mastery/",
     title: "One Bag Travel Mastery: Why the 45L Expandable Backpack Beats Wheeled Luggage",
     tag: "Travel & Carry",
     date: "October 2026",
@@ -322,6 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalPros = document.getElementById("modal-pros");
   const modalCons = document.getElementById("modal-cons");
   const modalCta = document.getElementById("modal-cta");
+  const modalPageLink = document.getElementById("modal-page-link");
 
   // Format currency
   function formatINR(price) {
@@ -370,18 +380,21 @@ document.addEventListener("DOMContentLoaded", () => {
       card.innerHTML = `
         <div class="card-image-container">
           ${discountBadgeHtml}
-          <img src="${p.image}" alt="${p.title}" loading="lazy">
+          <a href="${p.pageUrl}"><img src="${p.image}" alt="${p.title}" loading="lazy"></a>
         </div>
         <div class="card-details">
           <span class="card-brand">${p.brand}</span>
-          <h3 class="card-title">${p.title}</h3>
+          <h3 class="card-title"><a href="${p.pageUrl}">${p.title}</a></h3>
           <p class="card-why">"${p.whyRecommend}"</p>
           <div class="card-footer">
             <div class="card-price-group">
               <span class="card-price">${formatINR(p.price)}</span>
               ${oldPriceHtml}
             </div>
-            <button class="btn btn-action view-details-btn" data-id="${p.id}">View Analysis</button>
+            <div style="display: flex; gap: 8px;">
+              <a href="${p.pageUrl}" class="btn btn-action" style="padding: 0 10px; font-size: 11.5px; height: 32px; display: inline-flex; align-items: center;">Specs</a>
+              <button class="btn btn-action view-details-btn" data-id="${p.id}" style="padding: 0 10px; font-size: 11.5px; height: 32px;">Analysis</button>
+            </div>
           </div>
         </div>
       `;
@@ -452,19 +465,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Mobile navigation drawer toggle
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener("click", () => {
-      navMenu.classList.toggle("active");
-    });
-
-    // Close on link click
-    navMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("active");
-      });
-    });
-  }
+  // Mobile navigation handled centrally by nav.js
 
   // Modal actions
   function openProductModal(id) {
@@ -540,6 +541,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     modalCta.href = p.affiliateUrl;
+    if (modalPageLink) {
+      modalPageLink.href = p.pageUrl || "#";
+    }
 
     modal.classList.add("active");
     document.body.style.overflow = "hidden"; // Prevent background scroll
@@ -578,8 +582,9 @@ document.addEventListener("DOMContentLoaded", () => {
     articlesGrid.innerHTML = "";
 
     articles.forEach(art => {
-      const card = document.createElement("article");
+      const card = document.createElement("a");
       card.className = "article-card";
+      card.href = art.url;
       card.setAttribute("data-id", art.id);
       card.innerHTML = `
         <div class="article-thumb-wrap">
@@ -603,7 +608,6 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       `;
-      card.addEventListener("click", () => openArticleModal(art.id));
       articlesGrid.appendChild(card);
     });
   }
