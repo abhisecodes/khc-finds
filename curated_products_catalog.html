@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Curated Amazon Affiliate Products — KHC Finds</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 18mm 16mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.5;
+      background: #ffffff;
+      font-size: 13px;
+    }
+    .page-header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .header-sub {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+    .header-badge {
+      background: #dc2626;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+    .product-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+      background: #ffffff;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 18px;
+    }
+    .img-box {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      height: 160px;
+    }
+    .img-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .prod-num {
+      display: inline-block;
+      font-weight: 800;
+      color: #0284c7;
+      margin-right: 6px;
+    }
+    .prod-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .link-row {
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+    .link-label {
+      font-weight: 700;
+      color: #475569;
+    }
+    .affiliate-link {
+      color: #0284c7;
+      text-decoration: underline;
+      font-weight: 600;
+      word-break: break-all;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .price-current {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .price-mrp {
+      font-size: 12px;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+    .price-discount {
+      font-size: 11px;
+      font-weight: 700;
+      color: #dc2626;
+      background: #fef2f2;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .desc-text {
+      font-size: 12px;
+      color: #334155;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .specs-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+      background: #f8fafc;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+      font-size: 11px;
+    }
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .spec-key {
+      font-weight: 700;
+      color: #64748b;
+      font-size: 9.5px;
+      text-transform: uppercase;
+    }
+    .spec-val {
+      font-weight: 600;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div>
+      <div class="header-title">KHC Finds — Amazon Curated Catalog</div>
+      <div class="header-sub">Verified Live Product Descriptions, Technical Specifications & Direct Affiliate Links</div>
+    </div>
+    <span class="header-badge">LIVE AMAZON.IN PRICING</span>
+  </div>
+
+  <!-- Product 1 -->
+  <div class="product-card">
+    <div class="product-grid">
+      <div class="img-box">
+        <img src="assets/products/lg-43nu87-tv.jpg" alt="LG 43NU87 TV">
+      </div>
+      <div>
+        <h3 class="prod-title"><span class="prod-num">1.</span>LG 108 cms (43 inches) NU87 AI Series Nano 4K Ultra HD (3840 x 2160) Smart webOS LED TV 43NU870BPLA 2026</h3>
+        <div class="link-row">
+          <span class="link-label">Affiliate link: </span>
+          <a class="affiliate-link" href="https://link.amazon/B0iUnT4dz">https://link.amazon/B0iUnT4dz</a>
+        </div>
+        <div class="price-row">
+          <span class="price-current">₹29,990</span>
+          <span class="price-mrp">₹49,990</span>
+          <span class="price-discount">40% OFF</span>
+        </div>
+        <p class="desc-text"><strong>Amazon.in Description:</strong> The LG 43NU870BPLA 2026 Edition features a 4K NanoCell display with α7 AI Gen9 processor. Pure color filtration purifies dull RGB wavelengths, paired with AI Sound Pro (9.1.2 virtual up-mixing), Dolby Atmos, and webOS 26 with integrated Gemini & Copilot AI assistants.</p>
+        <div class="specs-list">
+          <div class="spec-item"><span class="spec-key">Display Tech</span><span class="spec-val">4K NanoCell LED (3840 x 2160)</span></div>
+          <div class="spec-item"><span class="spec-key">AI Processor</span><span class="spec-val">α7 AI Processor 4K Gen9</span></div>
+          <div class="spec-item"><span class="spec-key">Audio</span><span class="spec-val">20W RMS, AI Sound Pro 9.1.2, Dolby Atmos</span></div>
+          <div class="spec-item"><span class="spec-key">Smart Platform</span><span class="spec-val">webOS 26 (Gemini & Copilot Assist)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 2 -->
+  <div class="product-card">
+    <div class="product-grid">
+      <div class="img-box">
+        <img src="assets/products/philips-43pqt8100-tv.jpg" alt="Philips 43PQT8100 TV">
+      </div>
+      <div>
+        <h3 class="prod-title"><span class="prod-num">2.</span>PHILIPS 109 cm (43 inches) 8100 Series 4K Ultra HD Smart QLED Google TV 43PQT8100/94</h3>
+        <div class="link-row">
+          <span class="link-label">Affiliate link: </span>
+          <a class="affiliate-link" href="https://link.amazon/B0iJbJYxM">https://link.amazon/B0iJbJYxM</a>
+        </div>
+        <div class="price-row">
+          <span class="price-current">₹29,999</span>
+          <span class="price-mrp">₹49,990</span>
+          <span class="price-discount">40% OFF</span>
+        </div>
+        <p class="desc-text"><strong>Amazon.in Description:</strong> The Philips 8100 Series 43PQT8100 brings Quantum Dot (QLED) panel technology to the compact 43-inch form factor. Boasts Wider Color Gamut, 120Hz HSR (High Screen Refresh) for fluid gaming, cinema-grade Dolby Vision & Dolby Atmos with punchy 30W stereo speakers, and Google TV with hands-free voice search.</p>
+        <div class="specs-list">
+          <div class="spec-item"><span class="spec-key">Display Tech</span><span class="spec-val">Quantum Dot QLED (3840 x 2160)</span></div>
+          <div class="spec-item"><span class="spec-key">Refresh Rate</span><span class="spec-val">120Hz HSR (High Screen Refresh)</span></div>
+          <div class="spec-item"><span class="spec-key">Audio</span><span class="spec-val">30W Stereo RMS with Dolby Atmos</span></div>
+          <div class="spec-item"><span class="spec-key">Smart Platform</span><span class="spec-val">Google TV with Hands-Free Mic</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="product-card">
+    <div class="product-grid">
+      <div class="img-box">
+        <img src="assets/products/samsung-43-miniled-tv.jpg" alt="Samsung 43 Mini LED TV">
+      </div>
+      <div>
+        <h3 class="prod-title"><span class="prod-num">3.</span>Samsung 43 inch (108cm) Mini LED 4K Vision AI 2026 Smart TV | 30W Speakers | 4K Upscaling | Mini-LED HDR | 150+ Channels | 7 Years OS Upgrade | UA43M2EHAULXL</h3>
+        <div class="link-row">
+          <span class="link-label">Affiliate link: </span>
+          <a class="affiliate-link" href="https://link.amazon/B094wOMN9">https://link.amazon/B094wOMN9</a>
+        </div>
+        <div class="price-row">
+          <span class="price-current">₹33,990</span>
+          <span class="price-mrp">₹49,990</span>
+          <span class="price-discount">32% OFF</span>
+        </div>
+        <p class="desc-text"><strong>Amazon.in Description:</strong> The Samsung UA43M2EHAULXL (2026 Edition) harnesses precision Mini-LED backlighting to achieve deep blacks and vibrant contrast with zero halo bloom. Powered by Vision AI Companion, neural 4K Upscaling, 30W speakers with OTS Lite, 150+ free live channels on Samsung TV Plus, and 7 years of guaranteed Tizen OS updates.</p>
+        <div class="specs-list">
+          <div class="spec-item"><span class="spec-key">Display Tech</span><span class="spec-val">Mini-LED Precision Array (3840 x 2160)</span></div>
+          <div class="spec-item"><span class="spec-key">AI & OS</span><span class="spec-val">Vision AI, 7-Year Tizen OS Guarantee</span></div>
+          <div class="spec-item"><span class="spec-key">Audio</span><span class="spec-val">30W Output, OTS Lite, Adaptive Sound</span></div>
+          <div class="spec-item"><span class="spec-key">Streaming</span><span class="spec-val">150+ Free Channels via Samsung TV Plus</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 4 -->
+  <div class="product-card">
+    <div class="product-grid">
+      <div class="img-box">
+        <img src="assets/products/logitech-mk215-combo.jpg" alt="Logitech MK215 Combo">
+      </div>
+      <div>
+        <h3 class="prod-title"><span class="prod-num">4.</span>Logitech MK215 Wireless Keyboard and Mouse Combo for Windows, 2.4 GHz Wireless, Compact Design, 2-Year Battery Life(Keyboard),5 Month Battery Life(Mouse) PC/Laptop- Black</h3>
+        <div class="link-row">
+          <span class="link-label">Affiliate link: </span>
+          <a class="affiliate-link" href="https://link.amazon/B06T5QBlB">https://link.amazon/B06T5QBlB</a>
+        </div>
+        <div class="price-row">
+          <span class="price-current">₹1,295</span>
+          <span class="price-mrp">₹1,645</span>
+          <span class="price-discount">21% OFF</span>
+        </div>
+        <p class="desc-text"><strong>Amazon.in Description:</strong> Logitech MK215 is an ultra-compact wireless keyboard and mouse combo engineered for clutter-free workspaces. 2.4 GHz wireless provides 10-meter range with zero dropouts, 128-bit AES encryption, 36% smaller form factor with full number pad, and remarkable battery endurance (24 months keyboard, 5 months mouse).</p>
+        <div class="specs-list">
+          <div class="spec-item"><span class="spec-key">Connectivity</span><span class="spec-val">2.4 GHz Wireless (Nano USB Receiver)</span></div>
+          <div class="spec-item"><span class="spec-key">Range & Security</span><span class="spec-val">10m Range, 128-bit AES Encryption</span></div>
+          <div class="spec-item"><span class="spec-key">Battery Life</span><span class="spec-val">24 Mo (Keyboard) / 5 Mo (Mouse)</span></div>
+          <div class="spec-item"><span class="spec-key">Design</span><span class="spec-val">36% Compact Frame with Full Numpad</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 5 -->
+  <div class="product-card">
+    <div class="product-grid">
+      <div class="img-box">
+        <img src="assets/products/samsung-24-curved-monitor.jpg" alt="Samsung 24 Curved Monitor">
+      </div>
+      <div>
+        <h3 class="prod-title"><span class="prod-num">5.</span>Samsung 24" Curved Monitor|1800R Curved Screen|100Hz|4ms|SRGB 95%|Ports-HDMI,D-Sub,Headphone|Game Mode|EyeSaver Mode|16.7M Color Support|Flicker Free|Off Timer Plus|LS24D368GAWXXL|Black</h3>
+        <div class="link-row">
+          <span class="link-label">Affiliate link: </span>
+          <a class="affiliate-link" href="https://link.amazon/B0a1fH9kj">https://link.amazon/B0a1fH9kj</a>
+        </div>
+        <div class="price-row">
+          <span class="price-current">₹7,999</span>
+          <span class="price-mrp">₹13,999</span>
+          <span class="price-discount">43% OFF</span>
+        </div>
+        <p class="desc-text"><strong>Amazon.in Description:</strong> Samsung Essential Monitor S3 (LS24D368GAWXXL) delivers an immersive visual experience with an 1800R curvature tailored to natural human eye geometry. Features 100Hz refresh rate for fluid frame delivery, 95% sRGB color fidelity, dedicated Game Mode, and Flicker-Free Eye Saver mode.</p>
+        <div class="specs-list">
+          <div class="spec-item"><span class="spec-key">Screen & Curve</span><span class="spec-val">24" Full HD (1920x1080), 1800R Curvature</span></div>
+          <div class="spec-item"><span class="spec-key">Refresh & Speed</span><span class="spec-val">100Hz Refresh Rate, 4ms Response</span></div>
+          <div class="spec-item"><span class="spec-key">Color Gamut</span><span class="spec-val">95% sRGB, 16.7 Million Colors</span></div>
+          <div class="spec-item"><span class="spec-key">Connectivity</span><span class="spec-val">HDMI 1.4, D-Sub (VGA), Headphone Jack</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 6 -->
+  <div class="product-card">
+    <div class="product-grid">
+      <div class="img-box">
+        <img src="assets/products/wesley-luxur-backpack.jpg" alt="Wesley Luxur Backpack">
+      </div>
+      <div>
+        <h3 class="prod-title"><span class="prod-num">6.</span>Wesley Luxur 45 Ltrs Overnighter Expandable Travel Laptop Backpack, Flight Cabin Approved Carry On with 16 inch Laptop Compartment, Anti Theft feature business/Travel/Weekender/college Charcoal Black</h3>
+        <div class="link-row">
+          <span class="link-label">Affiliate link: </span>
+          <a class="affiliate-link" href="https://link.amazon/B0f1v3WK8">https://link.amazon/B0f1v3WK8</a>
+        </div>
+        <div class="price-row">
+          <span class="price-current">₹699</span>
+          <span class="price-mrp">₹2,999</span>
+          <span class="price-discount">77% OFF</span>
+        </div>
+        <p class="desc-text"><strong>Amazon.in Description:</strong> Wesley Luxur 45L Overnighter is an expandable travel backpack crafted from water-resistant polyester fabric. Designed to meet airline cabin carry-on regulations, it features a 180° clamshell suitcase opening, dedicated padded compartment for up to 16-inch laptops, anti-theft pockets, and ergonomic honeycomb back padding.</p>
+        <div class="specs-list">
+          <div class="spec-item"><span class="spec-key">Capacity</span><span class="spec-val">45 Litres (Expandable Luggage Volume)</span></div>
+          <div class="spec-item"><span class="spec-key">Laptop Vault</span><span class="spec-val">Shockproof Padded up to 16-inch Laptops</span></div>
+          <div class="spec-item"><span class="spec-key">Cabin Status</span><span class="spec-val">Airline Flight Cabin Carry-On Approved</span></div>
+          <div class="spec-item"><span class="spec-key">Build</span><span class="spec-val">Water-Resistant Polyester, 180° Opening</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

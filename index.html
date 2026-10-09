@@ -27,6 +27,8 @@
       <nav class="nav-menu" id="nav-menu">
         <ul>
           <li><a href="#">Home</a></li>
+          <li><a href="#catalog">Finds</a></li>
+          <li><a href="#articles">Journal & Guides</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#disclosure">Disclosure</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -66,30 +68,32 @@
             TRENDING SEARCHES
           </div>
           <div class="trending-list">
-            <div class="trending-item" data-search="Nothing Ear">Nothing Ear (a) <span class="trending-tag">🔥 Trending</span></div>
-            <div class="trending-item" data-search="Balolo">Balolo Setup Cockpit <span class="trending-tag">⚡ Hot</span></div>
-            <div class="trending-item" data-search="Keychron">Keychron K2 Keyboard <span class="trending-tag">🔥 Trending</span></div>
-            <div class="trending-item" data-search="Muji">Muji Aroma Diffuser <span class="trending-tag">⚡ Popular</span></div>
-            <div class="trending-item" data-search="Peak Design">Peak Design Backpack <span class="trending-tag">🔥 Trending</span></div>
+            <div class="trending-item" data-search="LG">LG 43" Nano 4K TV <span class="trending-tag">🔥 Trending</span></div>
+            <div class="trending-item" data-search="Samsung Mini LED">Samsung 43" Mini LED <span class="trending-tag">⚡ Hot</span></div>
+            <div class="trending-item" data-search="Philips">Philips 43" QLED TV <span class="trending-tag">🔥 Popular</span></div>
+            <div class="trending-item" data-search="Curved Monitor">Samsung 24" Curved Monitor <span class="trending-tag">⚡ Hot Deal</span></div>
+            <div class="trending-item" data-search="Logitech">Logitech MK215 Combo <span class="trending-tag">🔥 Best Seller</span></div>
+            <div class="trending-item" data-search="Wesley">Wesley Luxur 45L Backpack <span class="trending-tag">⚡ 77% OFF</span></div>
           </div>
         </div>
       </div>
 
       <!-- Announcement Banner -->
       <div class="announcement-bar">
-        ✨ Coming soon with more products like this. In production.
+        <span class="announcement-pill">🔥 Live Sale</span>
+        <span>Amazon Great Indian Festival is Live! Verified deals & price drops.</span>
       </div>
     </div>
 
     <!-- Hero Section -->
     <section class="hero">
-      <span class="hero-subtitle">Handpicked Recommendations</span>
+      <span class="hero-subtitle">Amazon Festive Deals • Curated Finds</span>
       <h1 class="hero-title">Objects engineered for clarity.</h1>
-      <p class="hero-desc">We spend hours researching and analyzing design details so you don't have to. Genuinely recommended, highly functional finds.</p>
+      <p class="hero-desc">We track genuine festive price drops on Amazon India to bring you verified, functional finds worth owning.</p>
       <div class="hero-cta-wrapper" style="margin-top: 16px;">
-        <a href="https://link.amazon/B00sgUAbO" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <a href="#catalog" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-          Shop Curated Storefront
+          Explore Curated Deals
         </a>
       </div>
     </section>
@@ -100,11 +104,23 @@
     </div>
 
     <!-- Product Grid Listings -->
-    <section class="catalog-section">
+    <section class="catalog-section" id="catalog">
       <div class="section-header">
         <h2 class="section-title">Curated Selection</h2>
       </div>
       <div class="products-grid" id="products-grid">
+        <!-- Loaded Dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- Journal & Blog Articles Section -->
+    <section class="journal-section" id="articles">
+      <div class="section-header journal-header">
+        <span class="hero-subtitle">Editorial & In-Depth Guides</span>
+        <h2 class="section-title">The Journal</h2>
+        <p class="journal-desc">Long-form buying guides, setup philosophy, and genuine breakdowns of our curated finds.</p>
+      </div>
+      <div class="articles-grid" id="articles-grid">
         <!-- Loaded Dynamically by app.js -->
       </div>
     </section>
@@ -145,6 +161,7 @@
             <div class="modal-meta-row">
               <span class="modal-price-val" id="modal-price">₹0</span>
               <span class="modal-oldprice-val" id="modal-old-price">₹0</span>
+              <span class="modal-discount-badge" id="modal-discount-badge" style="display: none;">0% OFF</span>
             </div>
 
             <div class="modal-recommendation-box" style="margin-top: 16px;">
@@ -155,6 +172,11 @@
             <div class="overview-section" style="margin-top: 16px;">
               <h4 class="modal-section-title">Overview</h4>
               <p id="modal-overview" style="font-size: 13px;"></p>
+            </div>
+
+            <div class="specs-section" id="modal-specs-section" style="margin-top: 16px; display: none;">
+              <h4 class="modal-section-title">Key Specifications</h4>
+              <div class="modal-specs-grid" id="modal-specs"></div>
             </div>
 
             <div class="pros-cons-grid" style="margin-top: 16px;">
@@ -177,6 +199,33 @@
 
       </div>
 
+    </div>
+  </div>
+
+  <!-- Article Reader Drawer / Modal -->
+  <div class="modal-overlay" id="article-modal">
+    <div class="modal-content article-modal-content">
+      <div class="modal-header-row">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="article-pill" id="article-modal-tag" style="position: static;">Buying Guide</span>
+          <span class="article-meta" id="article-modal-meta" style="margin: 0;">Oct 2026 • 5 min read</span>
+        </div>
+        <button class="modal-close-btn" id="article-modal-close" aria-label="Close article">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="article-reader-body">
+        <h1 class="article-reader-title" id="article-modal-title">Article Title</h1>
+        <div class="article-reader-img-wrap">
+          <img id="article-modal-img" src="" alt="">
+        </div>
+        <div class="article-reader-content" id="article-modal-content">
+          <!-- Dynamic article content -->
+        </div>
+      </div>
     </div>
   </div>
 
