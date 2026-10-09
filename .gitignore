@@ -42,3 +42,7 @@ next-env.d.ts
 
 # local node environment
 .node/
+
+# launch script and log
+scheduled_launch.ps1
+launch.log
