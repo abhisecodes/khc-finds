@@ -41,6 +41,40 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/style.css">
+
+  <!-- Structured Data: WebSite & Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://khc-finds.vercel.app/#website",
+        "url": "https://khc-finds.vercel.app/",
+        "name": "KHC Finds",
+        "description": "Curated Discoveries & Technology Journal",
+        "publisher": {
+          "@id": "https://khc-finds.vercel.app/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://khc-finds.vercel.app/products/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://khc-finds.vercel.app/#organization",
+        "name": "KHC Finds",
+        "url": "https://khc-finds.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://khc-finds.vercel.app/assets/storefront.png"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
