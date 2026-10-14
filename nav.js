@@ -1,6 +1,23 @@
 // =========================================================================
-// KHC Finds - Shared Navigation & Mobile Drawer Controller
+// KHC Finds - Shared Navigation & Site-Wide GA4 Analytics
 // =========================================================================
+
+// Google Analytics 4 (GA4) Global Site-Wide Tracker
+(function() {
+  const GA_MEASUREMENT_ID = 'G-SXGVX77Y1R';
+  if (!document.querySelector(`script[src*="${GA_MEASUREMENT_ID}"]`)) {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+  }
+})();
 
 document.addEventListener("DOMContentLoaded", () => {
   const mobileToggle = document.getElementById("mobile-menu-toggle");
