@@ -129,4 +129,11 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+  <!-- Best Mechanical Keyboards Under ₹3,000 in India (2026 Tested) -->
+  <url>
+    <loc>https://khc-finds.vercel.app/blog/best-mechanical-keyboards-under-3000/</loc>
+    <lastmod></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
