@@ -817,12 +817,27 @@ function generateFullPageHtml() {
 
 // Live Preview Tab Render
 function renderLivePreview() {
-  const fullHtml = generateFullPageHtml();
+  let fullHtml = generateFullPageHtml();
+  
+  // Inject <base target="_blank"> so all links (Amazon, Flipkart, Navigation) open in a new browser tab
+  // This prevents external websites from blocking iframe embedding with "refused to connect"
+  fullHtml = fullHtml.replace("<head>", `<head>\n  <base target="_blank">`);
+
   const iframe = el.previewFrame;
   const doc = iframe.contentDocument || iframe.contentWindow.document;
   doc.open();
   doc.write(fullHtml);
   doc.close();
+
+  setTimeout(() => {
+    try {
+      const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+      innerDoc.querySelectorAll("a").forEach(a => {
+        a.setAttribute("target", "_blank");
+        a.setAttribute("rel", "noopener noreferrer");
+      });
+    } catch (e) {}
+  }, 150);
 }
 
 // SEO Tab Render
