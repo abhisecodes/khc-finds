@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KHC Finds — Newsroom & Editorial CMS Studio</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230F172A'/><text x='50%' y='68%' font-family='system-ui, sans-serif' font-weight='800' font-size='52' fill='%23FFFFFF' text-anchor='middle'>K</text></svg>">
+  
+  <!-- Live Website Stylesheet & Studio Layout -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/editor/editor.css">
+</head>
+<body>
+
+  <!-- Sticky App Header (Identical to Live Website) -->
+  <header class="app-header">
+    <div class="container nav-container">
+      
+      <!-- Brand Logo -->
+      <div class="studio-logo-group">
+        <a href="/" class="logo">KHC <span>Finds</span></a>
+        <span class="studio-pill">Newsroom CMS</span>
+      </div>
+
+      <!-- Action Buttons on Header (Desktop) -->
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button class="btn btn-action" id="btn-save-draft" style="height: 38px; min-height: 38px; padding: 0 14px; font-size: 13px;">
+          Save Draft
+        </button>
+        <button class="btn btn-primary" id="btn-top-publish" style="height: 38px; min-height: 38px; padding: 0 14px; font-size: 13px;">
+          🚀 Publish Live
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Studio Main Content -->
+  <main class="studio-main">
+    <div class="container">
+      
+      <!-- Tab Navigation (Mobile-first horizontal scroller like Category Bar) -->
+      <nav class="studio-tab-bar" aria-label="Editor Views" style="margin-bottom: 20px;">
+        <button class="tab-pill active" data-tab="editor">
+          ✍️ Articles (New / Edit)
+        </button>
+        <button class="tab-pill" data-tab="catalog">
+          🏷️ Catalog Deals & Prices
+        </button>
+        <button class="tab-pill" data-tab="banner">
+          📢 Site Banner
+        </button>
+        <button class="tab-pill" data-tab="preview">
+          👁️ Live Preview
+        </button>
+        <button class="tab-pill" data-tab="seo">
+          🔍 Google SEO
+        </button>
+        <button class="tab-pill" data-tab="publish">
+          🚀 Live Publisher & GitHub
+        </button>
+      </nav>
+
+      <!-- TAB 1: COMPOSE VIEW -->
+      <section class="tab-view active" id="view-editor">
+        <div class="compose-grid">
+
+          <!-- Left Column: Editorial & Byline Settings -->
+          <aside>
+
+            <!-- Load Existing Content Dropdown -->
+            <div class="studio-card" style="background: #F1F5F9; border: 1.5px solid #CBD5E1;">
+              <h3 class="studio-card-title" style="color: #0F172A; margin-bottom: 8px;">
+                <span>Select Article to Edit</span>
+                <span class="studio-pill" style="font-size: 9px;">Manager</span>
+              </h3>
+              <div class="form-group">
+                <select class="form-select" id="existing-article-select" style="font-weight: 700; background: #FFFFFF; font-size: 13.5px;">
+                  <option value="new">✨ + Create Brand New Post</option>
+                  <option value="/blog/43-inch-4k-tv-shootout-2026/index.html">📝 Edit: 43-inch 4K TV Shootout 2026</option>
+                  <option value="/blog/ergonomic-desk-blueprint/index.html">📝 Edit: Ergonomic Desk Blueprint</option>
+                  <option value="/blog/one-bag-travel-mastery/index.html">📝 Edit: One Bag Travel Mastery</option>
+                </select>
+              </div>
+              <span style="font-size: 11.5px; color: var(--text-secondary);">Select any existing article above to load its headline, text, and pricing directly into the editor for updates!</span>
+            </div>
+            
+            <!-- Author & Byline Card (Media style) -->
+            <div class="studio-card">
+              <h3 class="studio-card-title">
+                <span>Byline & Timestamp</span>
+              </h3>
+
+              <div class="form-group">
+                <label class="form-label" for="author-select">Editor / Author</label>
+                <select class="form-select" id="author-select">
+                  <option value="KHC Editorial Staff">KHC Editorial Staff</option>
+                  <option value="Abhishek">Abhishek (Founder & Editor)</option>
+                  <option value="Tech & Hardware Desk">Tech & Hardware Desk</option>
+                  <option value="Festive Deals Tracker">Festive Deals Tracker</option>
+                  <option value="custom">✍️ Custom Author (Write Manually)...</option>
+                </select>
+              </div>
+
+              <!-- Custom Author Fields (shown when custom is selected) -->
+              <div id="custom-author-group" style="display: none; background: #F8FAFC; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 12px;">
+                <div class="form-group">
+                  <label class="form-label" for="custom-author-name">Author Name</label>
+                  <input type="text" class="form-input" id="custom-author-name" placeholder="e.g. Rahul Sharma">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="custom-author-role">Author Title / Role</label>
+                  <input type="text" class="form-input" id="custom-author-role" placeholder="e.g. Senior Tech Analyst">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="post-timestamp-mode">Publishing Time</label>
+                <select class="form-select" id="post-timestamp-mode">
+                  <option value="now">⚡ Set to Current Time Now</option>
+                  <option value="custom">📅 Custom Date & Time...</option>
+                </select>
+              </div>
+
+              <div id="custom-timestamp-group" style="display: none;">
+                <div class="form-group">
+                  <label class="form-label" for="custom-datetime">Date & Time</label>
+                  <input type="datetime-local" class="form-input" id="custom-datetime">
+                </div>
+              </div>
+
+              <div class="slug-preview" id="formatted-byline-preview" style="font-size: 11.5px; color: var(--text-primary);">
+                By <strong>KHC Editorial Staff</strong> • Oct 15, 2026 • 12:45 AM IST
+              </div>
+            </div>
+
+            <!-- Taxonomy & SEO Card -->
+            <div class="studio-card">
+              <h3 class="studio-card-title">
+                <span>Category & SEO Meta</span>
+              </h3>
+
+              <div class="form-group">
+                <label class="form-label" for="post-category">Category</label>
+                <select class="form-select" id="post-category">
+                  <option value="Buying Guides">Buying Guides</option>
+                  <option value="Setup Guides">Setup Guides</option>
+                  <option value="Tech News">Tech News</option>
+                  <option value="Travel & Carry">Travel & Carry</option>
+                  <option value="Audio & Sound">Audio & Sound</option>
+                  <option value="Affiliate Exclusives">Affiliate Exclusives</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="post-tag">Tag Pill</label>
+                <input type="text" class="form-input" id="post-tag" value="Buying Guide" placeholder="e.g. Buying Guide, Deep Dive, Special Report">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="post-slug">URL Slug</label>
+                <input type="text" class="form-input" id="post-slug" placeholder="best-keyboards-2026">
+                <div class="slug-preview" id="slug-preview-text">https://khc-finds.vercel.app/blog/...</div>
+              </div>
+
+              <div class="form-group" style="margin-top: 14px;">
+                <label class="form-label" for="post-meta-desc">
+                  <span>Meta Description</span>
+                  <span class="counter" id="meta-counter">0 / 160</span>
+                </label>
+                <textarea class="form-textarea" id="post-meta-desc" placeholder="130–160 character Google search description..."></textarea>
+              </div>
+
+              <div class="form-group" style="margin-top: 14px;">
+                <label class="form-label" for="post-cover-img">Cover Image URL</label>
+                <input type="url" class="form-input" id="post-cover-img" placeholder="https://images.unsplash.com/...">
+                <div class="cover-preview-box">
+                  <img src="" id="cover-preview-img" alt="Cover preview" style="display: none;">
+                  <span id="cover-placeholder">Paste image URL to preview</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="post-cover-caption">Image Caption</label>
+                <input type="text" class="form-input" id="post-cover-caption" placeholder="Short descriptive caption...">
+              </div>
+            </div>
+
+          </aside>
+
+          <!-- Right Column: Writing Canvas -->
+          <div class="writing-card">
+            
+            <!-- Format Toolbar -->
+            <div class="canvas-toolbar">
+              <div class="toolbar-group">
+                <button class="tool-btn" data-cmd="h2" title="Heading 2">H2</button>
+                <button class="tool-btn" data-cmd="h3" title="Heading 3">H3</button>
+                <button class="tool-btn" data-cmd="bold" title="Bold"><strong>B</strong></button>
+                <button class="tool-btn" data-cmd="italic" title="Italic"><em>I</em></button>
+                <button class="tool-btn" data-cmd="ul" title="Bullet List">• List</button>
+                <button class="tool-btn" data-cmd="ol" title="Numbered List">1. List</button>
+                <button class="tool-btn" data-cmd="quote" title="Quote">”</button>
+                <button class="tool-btn" data-cmd="table" title="Table">Table</button>
+              </div>
+
+              <div class="toolbar-group">
+                <!-- Media Newsroom Buttons -->
+                <button class="insert-badge-btn accent-amber" id="btn-add-takeaways">
+                  ⚡ Key Takeaways Box
+                </button>
+                <button class="insert-badge-btn" id="btn-add-product">
+                  🛍️ + Multi-Agency Affiliate Card
+                </button>
+                <button class="insert-badge-btn" id="btn-add-verdict">
+                  ⭐ + Verdict Box
+                </button>
+              </div>
+            </div>
+
+            <!-- Writing Sheet -->
+            <div class="canvas-sheet">
+              <div class="form-group">
+                <label class="form-label" for="post-title">
+                  <span>Headline</span>
+                  <span class="counter" id="title-counter">0 / 60</span>
+                </label>
+                <textarea class="title-textarea" id="post-title" rows="2" placeholder="Headline / Article Title..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <textarea class="subtitle-textarea" id="post-subtitle" rows="2" placeholder="Subheading / Lead paragraph summarizing the article for readers..."></textarea>
+              </div>
+
+              <div class="sheet-hr"></div>
+
+              <textarea class="content-textarea" id="post-content" placeholder="Write your editorial, review, or comparison here... Supports Markdown, Product Cards, and Media Highlights."></textarea>
+            </div>
+
+            <!-- Word Count & Info -->
+            <div class="canvas-footer">
+              <div style="display: flex; gap: 14px;">
+                <span id="stat-words">0 words</span>
+                <span>•</span>
+                <span id="stat-read-time">1 min read</span>
+              </div>
+              <span style="font-size: 11px;">Draft auto-saved on device</span>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TAB: CATALOG DEALS & PRICES -->
+      <section class="tab-view" id="view-catalog">
+        <div class="studio-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
+            <div>
+              <h3 class="studio-card-title" style="margin-bottom: 4px;">Live Product Catalog & Pricing Manager</h3>
+              <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">Update deal prices, festive discounts, and affiliate links across all products on your live website:</p>
+            </div>
+            <button class="btn btn-primary" id="btn-save-catalog-deals" style="height: 40px; min-height: 40px;">
+              💾 Save & Update Deals
+            </button>
+          </div>
+
+          <div class="catalog-edit-grid" id="catalog-edit-container">
+            <!-- Loaded dynamically by editor.js from live products -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: SITE BANNER & PROMO -->
+      <section class="tab-view" id="view-banner">
+        <div class="studio-card" style="max-width: 700px;">
+          <h3 class="studio-card-title">Top Announcement Banner Controller</h3>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">Change the top marquee banner shown across the website:</p>
+
+          <div class="form-group">
+            <label class="form-label" for="banner-pill-text">Banner Pill Label</label>
+            <input type="text" class="form-input" id="banner-pill-text" value="🔥 Live Sale" placeholder="e.g. 🔥 Live Sale, ⚡ Festive Drops">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="banner-message-text">Banner Announcement Message</label>
+            <input type="text" class="form-input" id="banner-message-text" value="Amazon Great Indian Festival is Live! Verified deals & price drops." placeholder="e.g. Diwali Mega Deals: Verified 50% Off Electronics!">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="banner-cta-link">Affiliate Sale Link</label>
+            <input type="url" class="form-input" id="banner-cta-link" value="https://link.amazon/B06dIjcHg" placeholder="https://link.amazon/...">
+          </div>
+
+          <!-- Live Preview of Banner -->
+          <div style="margin-top: 20px; padding: 14px; background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px;">
+            <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 6px;">Live Banner Preview</span>
+            <div style="background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;">
+              <span id="preview-banner-pill" style="background: #DC2626; color: #fff; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 6px;">🔥 Live Sale</span>
+              <span id="preview-banner-msg">Amazon Great Indian Festival is Live! Verified deals & price drops.</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="btn-save-banner" style="height: 40px; min-height: 40px; margin-top: 16px;">
+            💾 Save Announcement Banner
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 2: LIVE PREVIEW -->
+      <section class="tab-view" id="view-preview">
+        <div class="preview-card-wrap">
+          <div class="preview-card-header">
+            <span style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Interactive Article Preview</span>
+            <span style="font-size: 12px; color: var(--text-secondary);">Exact live layout, author byline & timestamp</span>
+          </div>
+          <iframe id="preview-frame" style="width: 100%; height: 750px; border: none; background: #FAFAF9;"></iframe>
+        </div>
+      </section>
+
+      <!-- TAB 3: GOOGLE SEO INSPECTOR -->
+      <section class="tab-view" id="view-seo">
+        <div class="seo-layout-stack">
+          
+          <div class="studio-card">
+            <h3 class="studio-card-title">Google Search Result Preview</h3>
+            <p style="font-size: 13px; color: var(--text-secondary);">Accurate preview of how this article will look on Google search results:</p>
+            
+            <div class="serp-box">
+              <div class="serp-url-row">
+                <span id="serp-url">https://khc-finds.vercel.app > blog > ...</span>
+              </div>
+              <div class="serp-title-link" id="serp-title">Headline goes here — KHC Finds</div>
+              <div class="serp-snippet-text" id="serp-desc">Meta description snippet appears here...</div>
+            </div>
+          </div>
+
+          <div class="studio-card">
+            <h3 class="studio-card-title">Schema.org Article JSON-LD (With Author Byline & Date)</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Google crawls this structured data to credit the author and index news timestamps:</p>
+            <pre class="code-display" id="schema-code"></pre>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TAB 4: LIVE PUBLISHER & GITHUB -->
+      <section class="tab-view" id="view-publish">
+        <div class="seo-layout-stack">
+
+          <!-- 1. Live 1-Click Publisher Card -->
+          <div class="studio-card" style="border: 2px solid #3B82F6;">
+            <h3 class="studio-card-title" style="color: #2563EB;">
+              <span>🚀 Live 1-Click Publishing (From Any Device)</span>
+            </h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">
+              Publish directly to the live website from your smartphone, tablet, or laptop without needing local Git commands. Vercel automatically deploys within 30 seconds!
+            </p>
+
+            <div class="form-group" style="max-width: 500px;">
+              <label class="form-label" for="github-token">
+                <span>GitHub Personal Access Token (Saved on this device)</span>
+                <a href="https://github.com/settings/tokens/new?scopes=repo&description=KHC+Studio" target="_blank" style="color: #2563EB; font-size: 11px;">Get Free Token &rarr;</a>
+              </label>
+              <input type="password" class="form-input" id="github-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+              <span style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Saved securely only in your device's private browser memory.</span>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+              <button class="btn btn-primary" id="btn-publish-live" style="height: 44px; min-height: 44px; padding: 0 20px; font-size: 14px; background: #2563EB;">
+                🚀 Publish Article Live Now
+              </button>
+              <button class="btn btn-action" id="btn-save-token" style="height: 44px; min-height: 44px;">
+                Save Token on this Device
+              </button>
+            </div>
+
+            <!-- Publishing Console -->
+            <div class="publish-console-box" id="publish-console">
+              <div class="console-line">Ready. Click "Publish Article Live Now" to push to GitHub & Vercel.</div>
+            </div>
+          </div>
+
+          <!-- 2. Manual Export / Local Backup Mode -->
+          <div class="studio-card">
+            <h3 class="studio-card-title">Manual Export & Local Examination</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">
+              If you prefer testing locally first before deploying live:
+            </p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button class="btn btn-primary" id="btn-export-html-card" style="height: 40px; min-height: 40px;">
+                Download index.html
+              </button>
+              <button class="btn btn-action" id="btn-copy-html" style="height: 40px; min-height: 40px;">
+                Copy Full HTML
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Sitemap & Catalog Snippets -->
+          <div class="studio-card">
+            <h3 class="studio-card-title">Auto-Generated Sitemap & Catalog Cards</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Sitemap registration block:</p>
+            <pre class="code-display" id="sitemap-snippet" style="max-height: 120px;"></pre>
+            <button class="btn btn-action" id="btn-copy-sitemap" style="height: 36px; min-height: 36px; margin-top: 10px;">
+              Copy Sitemap XML
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Sticky Mobile Action Bar -->
+  <div class="mobile-action-bar">
+    <button class="btn btn-action" id="btn-save-draft-mobile" style="flex: 1; height: 42px; min-height: 42px;">
+      Save Draft
+    </button>
+    <button class="btn btn-primary" id="btn-publish-live-mobile" style="flex: 1; height: 42px; min-height: 42px; background: #2563EB;">
+      🚀 Publish Live
+    </button>
+  </div>
+
+  <!-- MODAL: Insert Multi-Agency Affiliate Card -->
+  <div class="modal-overlay" id="modal-product-callout">
+    <div class="studio-modal-card">
+      <div class="studio-modal-header">
+        <h3>🛍️ Multi-Agency Affiliate Product Card</h3>
+        <button class="modal-close-btn modal-cancel">&times;</button>
+      </div>
+      <div class="studio-modal-body">
+        
+        <!-- Agency Selection -->
+        <div class="form-group">
+          <label class="form-label">Affiliate Partner / Retailer</label>
+          <div class="agency-chip-group" id="agency-chips">
+            <span class="agency-chip active" data-agency="Amazon India" data-cta="Check Price on Amazon &rarr;">Amazon India</span>
+            <span class="agency-chip" data-agency="Flipkart" data-cta="View Deal on Flipkart &rarr;">Flipkart</span>
+            <span class="agency-chip" data-agency="Croma" data-cta="Buy at Croma &rarr;">Croma</span>
+            <span class="agency-chip" data-agency="Official Brand Store" data-cta="Buy from Official Store &rarr;">Brand Store</span>
+            <span class="agency-chip" data-agency="Affiliate Partner" data-cta="Check Exclusive Price &rarr;">Agency Partner</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="prod-name">Product Name & Model</label>
+          <input type="text" class="form-input" id="prod-name" placeholder="e.g. Keychron C3 Pro QMK/VIA Mechanical Keyboard">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="prod-desc">Key Spec Highlights (1-2 lines)</label>
+          <input type="text" class="form-input" id="prod-desc" placeholder="e.g. Red linear switches, acoustic EVA foam, full VIA remapping.">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+          <div class="form-group">
+            <label class="form-label" for="prod-price">Deal Price</label>
+            <input type="text" class="form-input" id="prod-price" placeholder="₹2,899">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-oldprice">MRP</label>
+            <input type="text" class="form-input" id="prod-oldprice" placeholder="₹4,499">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-discount">Discount %</label>
+            <input type="text" class="form-input" id="prod-discount" placeholder="36% OFF">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="prod-link">Affiliate Link URL</label>
+          <input type="url" class="form-input" id="prod-link" placeholder="https://amazon.in/ or https://flipkart.com/...">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="prod-cta">Button Call to Action (CTA)</label>
+          <input type="text" class="form-input" id="prod-cta" value="Check Price on Amazon &rarr;">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="prod-img">Product Image URL</label>
+          <input type="url" class="form-input" id="prod-img" placeholder="https://images.unsplash.com/...">
+        </div>
+      </div>
+      <div class="studio-modal-footer">
+        <button class="btn btn-action modal-cancel" style="height: 38px; min-height: 38px;">Cancel</button>
+        <button class="btn btn-primary" id="btn-insert-product-confirm" style="height: 38px; min-height: 38px;">Insert Affiliate Card</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Insert Key Takeaways Box (Media Style) -->
+  <div class="modal-overlay" id="modal-takeaways">
+    <div class="studio-modal-card">
+      <div class="studio-modal-header">
+        <h3>⚡ Insert Story Key Takeaways</h3>
+        <button class="modal-close-btn modal-cancel">&times;</button>
+      </div>
+      <div class="studio-modal-body">
+        <p style="font-size: 13px; color: var(--text-secondary);">Add 3 quick bullet highlights for fast mobile skimming:</p>
+        <div class="form-group">
+          <label class="form-label" for="takeaway-1">Highlight 1</label>
+          <input type="text" class="form-input" id="takeaway-1" placeholder="Key finding / main verdict">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="takeaway-2">Highlight 2</label>
+          <input type="text" class="form-input" id="takeaway-2" placeholder="Best price / deal / value proposition">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="takeaway-3">Highlight 3</label>
+          <input type="text" class="form-input" id="takeaway-3" placeholder="Who should buy or avoid this">
+        </div>
+      </div>
+      <div class="studio-modal-footer">
+        <button class="btn btn-action modal-cancel" style="height: 38px; min-height: 38px;">Cancel</button>
+        <button class="btn btn-primary" id="btn-insert-takeaways-confirm" style="height: 38px; min-height: 38px;">Insert Takeaways</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Insert Verdict Box -->
+  <div class="modal-overlay" id="modal-verdict">
+    <div class="studio-modal-card">
+      <div class="studio-modal-header">
+        <h3>⭐ Insert Verdict Callout Box</h3>
+        <button class="modal-close-btn modal-cancel">&times;</button>
+      </div>
+      <div class="studio-modal-body">
+        <div class="form-group">
+          <label class="form-label" for="verdict-badge">Verdict Badge</label>
+          <input type="text" class="form-input" id="verdict-badge" value="Our Verdict" placeholder="e.g. Our Verdict, Best Overall, Best Budget">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="verdict-text">Evaluation Summary</label>
+          <textarea class="form-textarea" id="verdict-text" placeholder="State clearly who should buy this and why it stands out..."></textarea>
+        </div>
+      </div>
+      <div class="studio-modal-footer">
+        <button class="btn btn-action modal-cancel" style="height: 38px; min-height: 38px;">Cancel</button>
+        <button class="btn btn-primary" id="btn-insert-verdict-confirm" style="height: 38px; min-height: 38px;">Insert Verdict</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/editor/editor.js"></script>
+</body>
+</html>
