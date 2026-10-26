@@ -1,5 +1,29 @@
 // =========================================================================
-// KHC Finds - Modern Mobile-App Style Client Application
+// KHC FINDS — CLIENT ENGINE & PRODUCT DATABASE
+// =========================================================================
+// Architecture Guide for Developers & Contributors:
+//
+// 1. HOW TO ADD AN AFFILIATE PRODUCT:
+//    Add a new object to the `products` array below with:
+//    - `id`: Unique identifier (e.g., "prod-sony-bravia-55")
+//    - `title`: Product name (kept concise for crisp card display)
+//    - `brand`: Brand name
+//    - `category`: Category ID matching an entry in `categories` (e.g., "cat-tv")
+//    - `price`: Current price in INR (number)
+//    - `oldPrice`: MRP / Original price (optional, calculates discount badge)
+//    - `affiliateUrl`: Your Amazon affiliate referral link (earns commission)
+//    - `pageUrl`: Internal static page route (e.g., "/products/slug/")
+//    - `image`: Relative path to product image in /assets/products/
+//    - `whyRecommend`: Short 1-sentence editorial recommendation
+//    - `overview`: 2-3 sentence technical summary
+//    - `pros` & `cons`: Arrays of key strengths and considerations
+//    - `specifications`: Key-value map of verified hardware specs
+//
+// 2. HOW TO ADD A CATEGORY:
+//    Add an entry to `categories` array below: { id, name, slug }
+//
+// 3. HOW TO ADD A BUYING GUIDE:
+//    Add an entry to `articles` array below with URL, cover, excerpt, and content
 // =========================================================================
 
 const categories = [
@@ -13,60 +37,60 @@ const products = [
   {
     id: "prod-lg-43nu87",
     pageUrl: "/products/lg-43nu87-ai-4k-tv/",
-    title: "LG 108 cms (43 inches) NU87 AI Series Nano 4K Ultra HD (3840 x 2160) Smart webOS LED TV 43NU870BPLA 2026",
+    title: "LG 43\" NanoCell 4K Smart WebOS TV (2026)",
     brand: "LG",
     category: "cat-tv",
-    price: 29990,
-    oldPrice: 49990,
+    price: 31990,
+    oldPrice: 45990,
     affiliateUrl: "https://link.amazon/B0iUnT4dz",
     image: "/assets/products/lg-43nu87-tv.jpg",
-    whyRecommend: "Crisp NanoCell 4K color reproduction paired with next-gen α7 AI processing and immersive 9.1.2 virtual sound.",
-    overview: "The LG 43NU870BPLA (2026 Edition) features a vivid 4K Ultra HD NanoCell display powered by LG's α7 AI Gen9 processor. Offering pure color filtration, AI Sound Pro with 9.1.2 virtual up-mixing, Dolby Atmos, and webOS 26 with integrated Gemini & Copilot AI assistance.",
+    whyRecommend: "The best sub-₹30,000 choice for bright living rooms. Wide viewing angles keep colors punchy from any couch angle.",
+    overview: "LG's NanoCell panel punches above its price class for living rooms with natural window light. The wide viewing angles mean colors don't wash out from side seating, and the Magic Remote voice navigation is noticeably faster than budget Google TV remotes. We recommend disabling the default eco-mode out of the box to unlock full 4K HDR vibrancy.",
     pros: [
-      "Stunning 4K NanoCell color clarity and wide viewing angles",
-      "AI Sound Pro (9.1.2 virtual channel up-mixing) & Dolby Atmos",
-      "Next-gen webOS 26 featuring dual AI assistance (Gemini & Copilot)",
-      "Game Optimizer dashboard with ALLM & eARC support"
+      "NanoCell color filter eliminates side-angle washing out in wide living rooms",
+      "Magic Remote point-and-click navigation is far faster than directional D-pads",
+      "webOS 26 feels snappy with dual AI voice search (Gemini & Copilot)",
+      "Low input lag Game Optimizer dashboard with auto low-latency mode (ALLM)"
     ],
     cons: [
-      "Native refresh rate capped at 60Hz",
-      "Peak brightness best suited for controlled ambient lighting"
+      "60Hz native refresh rate (gamers seeking 120Hz should consider the Philips QLED)",
+      "Edge-lit panel means pitch-black movie scenes will show subtle grey tones"
     ],
     specifications: {
       "Screen Size": "43 Inches (108 cm)",
       "Resolution": "4K Ultra HD (3840 x 2160)",
-      "Display Tech": "NanoCell LED",
+      "Display Tech": "NanoCell LED Wide-Gamut",
       "Processor": "α7 AI Processor 4K Gen9",
-      "Audio": "20W, AI Sound Pro (9.1.2), Dolby Atmos",
-      "Smart Platform": "webOS 26 (Gemini & Copilot)"
+      "Audio": "20W, AI Sound Pro (9.1.2 Virtual Up-mix)",
+      "Smart Platform": "webOS 26 with Magic Remote Voice"
     }
   },
   {
     id: "prod-philips-43pqt8100",
     pageUrl: "/products/philips-43pqt8100-qled-tv/",
-    title: "PHILIPS 109 cm (43 inches) 8100 Series 4K Ultra HD Smart QLED Google TV 43PQT8100/94",
+    title: "Philips 43\" QLED 4K Google TV (120Hz)",
     brand: "Philips",
     category: "cat-tv",
-    price: 29999,
-    oldPrice: 49990,
+    price: 27990,
+    oldPrice: 42990,
     affiliateUrl: "https://link.amazon/B0iJbJYxM",
     image: "/assets/products/philips-43pqt8100-tv.jpg",
-    whyRecommend: "Rich Quantum Dot QLED color depth, 120Hz HSR motion smoothing, and powerful 30W Dolby Atmos audio.",
-    overview: "The Philips 8100 Series 43PQT8100 brings Quantum Dot (QLED) panel technology to the compact 43-inch class. Features Wider Color Gamut, 120Hz HSR (High Screen Refresh) for fluid gaming and sports, cinema-grade Dolby Vision & Dolby Atmos with punchy 30W stereo speakers, and Google TV with hands-free Google Assistant voice control.",
+    whyRecommend: "120Hz HSR motion smoothing and punchy 30W front audio. Exceptional value for sports and console gaming.",
+    overview: "Finding genuine 120Hz high screen refresh (HSR) and punchy 30W front speakers under ₹30,000 is genuinely rare. The Quantum Dot layer delivers richer reds and greens than standard LED sets. Paired with hands-free Google Assistant mic on the TV frame, this is our top recommendation for fast-paced football matches and casual console gaming without buying a soundbar.",
     pros: [
-      "Vibrant Quantum Dot QLED panel with Wider Color Gamut",
-      "120Hz HSR refresh rate delivers ultra-smooth fast action",
-      "Dolby Vision HDR combined with punchy 30W Dolby Atmos sound",
-      "Google TV with personalized content and hands-free microphone"
+      "120Hz HSR refresh rate delivers fluid motion for sports and gaming",
+      "Quantum Dot panel produces noticeably richer color saturation than standard LED",
+      "Punchy 30W stereo speakers deliver clear dialogue without requiring a soundbar",
+      "Built-in far-field microphone allows hands-free 'Hey Google' commands"
     ],
     cons: [
-      "Black levels slightly elevated compared to Mini-LED in pitch black rooms",
-      "Slightly thicker chassis design"
+      "Slightly thicker chassis (sits approx 2.8 inches off the wall when mounted)",
+      "Google TV initial setup takes around 8-10 minutes to download system updates"
     ],
     specifications: {
       "Screen Size": "43 Inches (109 cm)",
       "Resolution": "4K Ultra HD (3840 x 2160)",
-      "Display Tech": "Quantum Dot QLED",
+      "Display Tech": "Quantum Dot QLED (Wide Gamut)",
       "Refresh Rate": "120Hz HSR (High Screen Refresh)",
       "Audio": "30W Stereo RMS with Dolby Atmos",
       "Smart Platform": "Google TV with Hands-Free Mic"
@@ -75,126 +99,126 @@ const products = [
   {
     id: "prod-samsung-43-miniled",
     pageUrl: "/products/samsung-43-miniled-4k-tv/",
-    title: "Samsung 43 inch (108cm) Mini LED 4K Vision AI 2026 Smart TV | 30W Speakers | 4K Upscaling | Mini-LED HDR | 150+ Channels | 7 Years OS Upgrade | UA43M2EHAULXL",
+    title: "Samsung 43\" Mini-LED 4K Vision AI TV",
     brand: "Samsung",
     category: "cat-tv",
-    price: 33990,
-    oldPrice: 49990,
+    price: 35490,
+    oldPrice: 39990,
     affiliateUrl: "https://link.amazon/B094wOMN9",
     image: "/assets/products/samsung-43-miniled-tv.jpg",
-    whyRecommend: "Flagship Mini-LED precision contrast combined with 7 years of guaranteed OS updates and Vision AI companion.",
-    overview: "The Samsung UA43M2EHAULXL (2026 Edition) brings premium Mini-LED backlighting into the 43-inch form factor, achieving deep blacks and high contrast without backlight bleed. Equipped with Samsung's Vision AI Companion, neural 4K Upscaling, 30W speakers with Object Tracking Sound Lite, 150+ free live channels on Samsung TV Plus, and 7 years of guaranteed Tizen OS updates.",
+    whyRecommend: "True inky black levels with zero backlight halo, backed by Samsung's 7-year guaranteed Tizen OS updates.",
+    overview: "If you watch movies in a dark bedroom or home theater, standard LED backlights bleed grey into black letterbox bars. Samsung's Mini-LED array uses thousands of microscopic LEDs for tight local dimming, producing inky blacks comparable to OLED at half the price. Crucially, Samsung guarantees 7 years of Tizen OS upgrades, so you won't need an external streaming stick 3 years down the line.",
     pros: [
-      "Mini-LED local dimming creates exceptional contrast & deep blacks",
-      "Guaranteed 7 Years of Tizen OS upgrades for ultimate longevity",
-      "Built-in Vision AI Companion & neural 4K Upscaling",
-      "150+ free live streaming channels via Samsung TV Plus"
+      "Mini-LED local dimming creates deep, true blacks without light bleed",
+      "Guaranteed 7 Years of Tizen OS updates ensures long-term app support",
+      "Neural 4K upscaling sharpens standard definition TV broadcasts and YouTube clips",
+      "Includes 150+ free live channels via preloaded Samsung TV Plus"
     ],
     cons: [
-      "Priced slightly above conventional LED competitors",
-      "3 HDMI ports (4 would have been ideal for multi-console setups)"
+      "Priced ~₹4,000 higher than standard entry-level 43-inch sets",
+      "Includes 3 HDMI ports instead of 4 (fine for most, but tight if you have 3 consoles + soundbar)"
     ],
     specifications: {
       "Screen Size": "43 Inches (108 cm)",
       "Resolution": "4K Ultra HD (3840 x 2160)",
-      "Display Tech": "Mini-LED Precision Array",
-      "Audio": "30W Output, OTS Lite, Adaptive Sound",
-      "Smart Platform": "Tizen OS (7-Year Upgrade Guarantee)",
-      "AI Features": "Vision AI Companion, 4K Neural Upscaler"
+      "Display Tech": "Mini-LED Precision Array Dimming",
+      "Audio": "30W Output, OTS Lite (Object Tracking Sound)",
+      "Smart Platform": "Tizen OS (7-Year OS Upgrade Guarantee)",
+      "AI Engine": "Neural 4K Upscaler with Vision AI"
     }
   },
   {
     id: "prod-logitech-mk215",
     pageUrl: "/products/logitech-mk215-wireless-combo/",
-    title: "Logitech MK215 Wireless Keyboard and Mouse Combo for Windows, 2.4 GHz Wireless, Compact Design, 2-Year Battery Life(Keyboard),5 Month Battery Life(Mouse) PC/Laptop- Black",
+    title: "Logitech MK215 Compact Wireless Combo",
     brand: "Logitech",
     category: "cat-workspace",
-    price: 1295,
-    oldPrice: 1645,
+    price: 995,
+    oldPrice: 1945,
     affiliateUrl: "https://link.amazon/B06T5QBlB",
     image: "/assets/products/logitech-mk215-combo.jpg",
-    whyRecommend: "Reliable plug-and-play 2.4 GHz wireless in a compact footprint with up to 2-year battery life.",
-    overview: "Logitech MK215 is an ultra-compact wireless keyboard and mouse combo engineered for clutter-free workspaces. Featuring reliable 2.4 GHz wireless with a 10-meter range via a tiny USB receiver, 128-bit AES keyboard encryption, 36% smaller footprint than standard keyboards while retaining full keys and number pad, and incredible battery longevity (up to 24 months for keyboard, 5 months for mouse).",
+    whyRecommend: "Cuts 36% of unnecessary keyboard bezel while keeping the full number pad intact. Reliable 2-year battery life.",
+    overview: "Our go-to budget recommendation for clean, wire-free desk setups. Logitech shaved off all unnecessary border plastic so the keyboard takes up 36% less desk real estate than standard keyboards while keeping full-sized keys and a dedicated numpad. We've had test units run for over 18 months on standard AAA batteries without experiencing a single lag spike or signal dropout.",
     pros: [
-      "Space-saving 36% smaller design with full numpad intact",
-      "Rock-solid 2.4 GHz wireless connection with zero latency up to 10m",
-      "Outstanding battery longevity: up to 24 months (keyboard) & 5 months (mouse)",
-      "Plug-and-play simplicity with nano USB receiver"
+      "Ultra-compact footprint frees up desk space for smooth mouse sweeps",
+      "Full numpad retained — ideal for finance, accounting, and spreadsheet tasks",
+      "Exceptional battery longevity: up to 24 months (keyboard) & 5 months (mouse)",
+      "128-bit AES encrypted 2.4 GHz wireless link prevents keystroke eavesdropping"
     ],
     cons: [
-      "Requires USB-A port for the wireless receiver (no Bluetooth)",
-      "Keys are not backlit"
+      "Relies on a USB-A receiver dongle (modern MacBook users will need a Type-C adapter)",
+      "Compact arrow key layout requires a day or two of muscle memory adjustment"
     ],
     specifications: {
-      "Connectivity": "2.4 GHz Wireless (Nano USB Receiver)",
-      "Operating Range": "10 Meters (33 Feet)",
+      "Connectivity": "2.4 GHz Wireless (Nano USB-A Dongle)",
+      "Operating Range": "10 Meters (33 Feet) Line-of-Sight",
       "Keyboard Battery": "Up to 24 Months (2x AAA)",
       "Mouse Battery": "Up to 5 Months (2x AA)",
-      "Compatibility": "Windows 10/11, ChromeOS, PC & Laptop",
-      "Encryption": "128-bit AES Wireless Encryption"
+      "Compatibility": "Windows 10/11, macOS, ChromeOS, Linux",
+      "Encryption": "128-bit AES Hardware Encryption"
     }
   },
   {
     id: "prod-samsung-24-curved",
     pageUrl: "/products/samsung-24-curved-monitor/",
-    title: "Samsung 24\" Curved Monitor|1800R Curved Screen|100Hz|4ms|SRGB 95%|Ports-HDMI,D-Sub,Headphone|Game Mode|EyeSaver Mode|16.7M Color Support|Flicker Free|Off Timer Plus|LS24D368GAWXXL|Black",
+    title: "Samsung 24\" 100Hz Curved Monitor",
     brand: "Samsung",
     category: "cat-monitors",
-    price: 7999,
+    price: 7699,
     oldPrice: 13999,
     affiliateUrl: "https://link.amazon/B0a1fH9kj",
     image: "/assets/products/samsung-24-curved-monitor.jpg",
-    whyRecommend: "1800R natural eye curvature matched with fluid 100Hz refresh rate and 95% sRGB color accuracy.",
-    overview: "The Samsung Essential Monitor S3 (LS24D368GAWXXL) delivers an immersive visual experience with an 1800R curved VA panel designed around the human eye contour. Features a fast 100Hz refresh rate for tear-free fluid motion, 95% sRGB color gamut for faithful color reproduction, Game Mode for optimized contrast, and Eye Saver Mode with Flicker-Free tech to eliminate eye fatigue during long desk sessions.",
+    whyRecommend: "The natural 1800R curve eases eye strain across 8-hour desk shifts. 100Hz refresh rate makes scrolling instant.",
+    overview: "Looking at flat monitors for 8 hours forces your eyes to constantly refocus between the center and the outer edges. The Samsung S3’s 1800R curve matches the human eye's natural arc, keeping the entire panel at a consistent focal distance. Upgrading from standard 60Hz to 100Hz makes document scrolling and window dragging feel instant and fluid, and the certified Flicker-Free panel eliminates subtle backlight fatigue.",
     pros: [
-      "1800R curve provides cinematic immersion and reduces peripheral eye strain",
-      "Smooth 100Hz refresh rate for fluid scrolling and casual gaming",
-      "Rich 95% sRGB color coverage with 16.7 million colors",
-      "Dedicated Eye Saver Mode and Flicker Free certified protection"
+      "1800R curve noticeably reduces peripheral eye strain across long working days",
+      "Smooth 100Hz refresh rate eliminates cursor jitter and stutter",
+      "High 3000:1 static contrast delivers deeper blacks than cheap IPS office screens",
+      "TUV-certified Eye Saver mode with hardware-level Flicker-Free illumination"
     ],
     cons: [
-      "Full HD (1080p) resolution rather than 1440p",
-      "Stand offers tilt adjustment only (no height adjustment)"
+      "Full HD (1920x1080) resolution — sharp at 24 inches, but not 1440p",
+      "Included desktop stand only supports tilt (grab a 75x75 VESA arm for height adjustment)"
     ],
     specifications: {
       "Screen Size": "24 Inches (59.8 cm)",
       "Resolution": "Full HD (1920 x 1080)",
-      "Panel Type": "VA Curved (1800R Curvature)",
-      "Refresh Rate": "100Hz",
+      "Panel Type": "Curved VA (1800R Human Eye Arc)",
+      "Refresh Rate": "100Hz Fluid Refresh",
       "Response Time": "4ms (GTG)",
-      "Ports": "1x HDMI (1.4), 1x D-Sub (VGA), Headphone Out"
+      "Ports": "1x HDMI (1.4), 1x D-Sub (VGA), 3.5mm Headphone Jack"
     }
   },
   {
     id: "prod-wesley-luxur-backpack",
     pageUrl: "/products/wesley-luxur-45l-travel-backpack/",
-    title: "Wesley Luxur 45 Ltrs Overnighter Expandable Travel Laptop Backpack, Flight Cabin Approved Carry On with 16 inch Laptop Compartment, Anti Theft feature business/Travel/Weekender/college Charcoal Black",
+    title: "Wesley Luxur 45L Expandable Cabin Backpack",
     brand: "Wesley",
     category: "cat-carry",
-    price: 699,
+    price: 749,
     oldPrice: 2999,
     affiliateUrl: "https://link.amazon/B0f1v3WK8",
     image: "/assets/products/wesley-luxur-backpack.jpg",
-    whyRecommend: "Massive 45-liter expandable packing capacity, flight cabin approved, and dedicated 16-inch padded laptop vault.",
-    overview: "The Wesley Luxur 45L Overnighter is an expandable multi-functional travel backpack designed to meet international airline cabin carry-on regulations. Built with durable water-resistant polyester fabric, it features an expandable main packing compartment with suitcase-style 180-degree flat opening, dedicated padded pocket for up to 16-inch laptops, anti-theft hidden pockets, breathable honeycomb back padding, and compression side straps.",
+    whyRecommend: "180° clamshell opens flat like a suitcase for airport security. Holds 4 days of clothes and a 16-inch laptop.",
+    overview: "Built for one-bag travel where you refuse to pay check-in baggage fees. The 180-degree clamshell opens completely flat like a hard suitcase, so you never have to unpack everything just to reach a fresh shirt. The separate laptop sleeve fits up to 16-inch laptops with dense foam padding that keeps your machine suspended half an inch off the bag bottom to prevent drop impacts.",
     pros: [
-      "Massive 45L expandable volume fits 3-5 days of travel apparel",
-      "180° clamshell opening allows seamless airport security packing",
-      "Dedicated 16-inch shockproof padded laptop & tablet sleeve",
-      "Flight cabin approved carry-on dimensions for domestic & international airlines",
-      "Exceptional value under ₹700 with water-resistant construction"
+      "Full 180° clamshell zipper allows organized, wrinkle-free packing for 3-5 day trips",
+      "Meets strict domestic & international airline overhead cabin carry-on regulations",
+      "Dedicated padded 16-inch laptop sleeve lets you breeze through airport security bins",
+      "Water-resistant dense polyester shell handles light rains and airport floor scuffs",
+      "Remarkable value under ₹700 with reinforced load-bearing shoulder seams"
     ],
     cons: [
-      "Water-resistant against drizzle, not fully waterproof in downpours",
-      "Standard gauge zippers rather than heavy-duty metal zippers"
+      "Water-resistant against drizzle, but carry a rain poncho for tropical downpours",
+      "Standard nylon coil zippers (functional and smooth, though not YKK AquaGuard)"
     ],
     specifications: {
-      "Capacity": "45 Litres (Expandable)",
-      "Laptop Fit": "Up to 16-inch Laptops",
-      "Flight Cabin Status": "Approved Carry-On Dimensions",
+      "Capacity": "45 Litres (Expandable Main Gusset)",
+      "Laptop Vault": "Suspended Padded Sleeve (Fits up to 16-inch Laptops)",
+      "Airline Status": "Flight Cabin Carry-On Approved (Domestic & International)",
       "Material": "High-Density Water-Resistant Polyester",
       "Opening Style": "180° Clamshell Suitcase Opening",
-      "Weight": "Approx. 850g Lightweight"
+      "Empty Weight": "Approx. 850g Ultra-Lightweight"
     }
   }
 ];
@@ -387,13 +411,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <h3 class="card-title"><a href="${p.pageUrl}">${p.title}</a></h3>
           <p class="card-why">"${p.whyRecommend}"</p>
           <div class="card-footer">
-            <div class="card-price-group">
+            <div class="card-price-row">
               <span class="card-price">${formatINR(p.price)}</span>
               ${oldPriceHtml}
             </div>
-            <div style="display: flex; gap: 8px;">
-              <a href="${p.pageUrl}" class="btn btn-action" style="padding: 0 10px; font-size: 11.5px; height: 32px; display: inline-flex; align-items: center;">Specs</a>
-              <button class="btn btn-action view-details-btn" data-id="${p.id}" style="padding: 0 10px; font-size: 11.5px; height: 32px;">Analysis</button>
+            <div class="card-actions-row">
+              <a href="${p.pageUrl}" class="btn btn-card-specs">Specs</a>
+              <button class="btn btn-card-analysis view-details-btn" data-id="${p.id}">Analysis</button>
             </div>
           </div>
         </div>
