@@ -401,6 +401,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ? `<span class="card-old-price">${formatINR(p.oldPrice)}</span>` 
         : "";
 
+      const savePillHtml = (p.oldPrice && p.oldPrice > p.price)
+        ? `<span class="card-save-pill">Save ${formatINR(p.oldPrice - p.price)}</span>`
+        : "";
+
       card.innerHTML = `
         <div class="card-image-container">
           ${discountBadgeHtml}
@@ -414,10 +418,20 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="card-price-row">
               <span class="card-price">${formatINR(p.price)}</span>
               ${oldPriceHtml}
+              ${savePillHtml}
             </div>
             <div class="card-actions-row">
-              <a href="${p.pageUrl}" class="btn btn-card-specs">Specs</a>
-              <button class="btn btn-card-analysis view-details-btn" data-id="${p.id}">Analysis</button>
+              <a href="${p.affiliateUrl}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-card-amazon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span>Buy on Amazon</span>
+              </a>
+              <button class="btn btn-card-analysis view-details-btn" data-id="${p.id}" aria-label="View Specs and Analysis">
+                <span>Specs &amp; Review</span>
+              </button>
             </div>
           </div>
         </div>

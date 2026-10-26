@@ -253,12 +253,12 @@
         
         <!-- Curated Product Catalog & Deals Section (Front & Center for 100s of Products) -->
         <section class="catalog-section" id="catalog" style="margin-bottom: 52px;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; flex-wrap: wrap; gap: 12px;">
-            <div>
+          <div class="section-header-bar">
+            <div class="section-header-titles">
               <span class="hero-subtitle" style="font-size: 10.5px; color: var(--accent-color); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;">Curated Selections &bull; Amazon Great Indian Festival</span>
-              <h2 class="editorial-section-title" style="margin-bottom: 0; margin-top: 4px;">Curated Product Discovery</h2>
+              <h2 class="editorial-section-title">Curated Product Discovery</h2>
             </div>
-            <a href="/products/" class="btn btn-action" style="font-size: 12px; height: 34px; padding: 0 14px;">View All Categories &rarr;</a>
+            <a href="/products/" class="btn btn-action header-action-btn">All Categories &rarr;</a>
           </div>
           <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">Tested for real-world ergonomics, long-term durability, and 90-day Amazon India price drops. Click Specs for detailed hardware data or Analysis for hands-on notes.</p>
           
@@ -275,12 +275,12 @@
 
         <!-- Editorial Journal & Buying Guides Section -->
         <section class="journal-section" id="articles" style="padding-top: 0; border-top: none; margin-bottom: 48px;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
-            <div>
+          <div class="section-header-bar">
+            <div class="section-header-titles">
               <span class="hero-subtitle" style="font-size: 10.5px; color: var(--accent-color); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;">Hands-On Breakdowns</span>
-              <h2 class="editorial-section-title" style="margin-bottom: 0; margin-top: 4px;">The Journal &amp; Buying Guides</h2>
+              <h2 class="editorial-section-title">The Journal &amp; Buying Guides</h2>
             </div>
-            <a href="/blog/" class="btn btn-action" style="font-size: 12px; height: 34px; padding: 0 14px;">All Guides &rarr;</a>
+            <a href="/blog/" class="btn btn-action header-action-btn">All Guides &rarr;</a>
           </div>
           <div class="articles-grid" id="articles-grid">
             <!-- Loaded Dynamically by app.js -->
@@ -289,12 +289,12 @@
 
         <!-- Tech & Industry Dispatches Section -->
         <section class="magazine-section" style="margin-bottom: 36px;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
-            <div>
+          <div class="section-header-bar">
+            <div class="section-header-titles">
               <span class="hero-subtitle" style="font-size: 10.5px; color: var(--accent-color); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;">Standards &amp; Silicon</span>
-              <h2 class="editorial-section-title" style="margin-bottom: 0; margin-top: 4px;">Tech &amp; Hardware Intelligence</h2>
+              <h2 class="editorial-section-title">Tech &amp; Hardware Intelligence</h2>
             </div>
-            <a href="/news/" class="btn btn-action" style="font-size: 12px; height: 34px; padding: 0 14px;">All News &rarr;</a>
+            <a href="/news/" class="btn btn-action header-action-btn">All News &rarr;</a>
           </div>
           
           <div class="media-stories-list">
@@ -377,43 +377,83 @@
           <div class="sidebar-deals-list">
             
             <div class="sidebar-deals-item">
-              <div>
+              <div class="sidebar-deal-main">
                 <a href="/products/wesley-luxur-45l-travel-backpack/" class="sidebar-deal-name">Wesley 45L Backpack</a>
-                <span class="sidebar-deal-price">₹749 <span style="text-decoration: line-through; opacity: 0.6;">₹2,999</span></span>
+                <div class="sidebar-deal-price-row">
+                  <span class="sidebar-deal-price">₹749</span>
+                  <span class="sidebar-deal-mrp">₹2,999</span>
+                </div>
               </div>
-              <span class="badge-lime" style="font-size: 10px; padding: 3px 8px;">75% OFF</span>
+              <div class="sidebar-deal-action">
+                <span class="badge-lime" style="font-size: 10px; padding: 2px 7px;">75% OFF</span>
+                <a href="https://link.amazon/B0f1v3WK8" target="_blank" rel="nofollow sponsored noopener" class="sidebar-deal-buy-btn" title="Buy Wesley 45L on Amazon">
+                  Buy &rarr;
+                </a>
+              </div>
             </div>
 
             <div class="sidebar-deals-item">
-              <div>
-                <a href="/products/samsung-24-curved-monitor/" class="sidebar-deal-name">Samsung 24" 100Hz Curved</a>
-                <span class="sidebar-deal-price">₹7,699 <span style="text-decoration: line-through; opacity: 0.6;">₹13,999</span></span>
+              <div class="sidebar-deal-main">
+                <a href="/products/samsung-24-curved-monitor/" class="sidebar-deal-name">Samsung 24" Curved Monitor</a>
+                <div class="sidebar-deal-price-row">
+                  <span class="sidebar-deal-price">₹7,699</span>
+                  <span class="sidebar-deal-mrp">₹13,999</span>
+                </div>
               </div>
-              <span class="badge-lime" style="font-size: 10px; padding: 3px 8px;">45% OFF</span>
+              <div class="sidebar-deal-action">
+                <span class="badge-lime" style="font-size: 10px; padding: 2px 7px;">45% OFF</span>
+                <a href="https://link.amazon/B0a1fH9kj" target="_blank" rel="nofollow sponsored noopener" class="sidebar-deal-buy-btn" title="Buy Samsung 24 on Amazon">
+                  Buy &rarr;
+                </a>
+              </div>
             </div>
 
             <div class="sidebar-deals-item">
-              <div>
-                <a href="/products/philips-43pqt8100-qled-tv/" class="sidebar-deal-name">Philips 43" QLED 120Hz</a>
-                <span class="sidebar-deal-price">₹27,990 <span style="text-decoration: line-through; opacity: 0.6;">₹42,990</span></span>
+              <div class="sidebar-deal-main">
+                <a href="/products/philips-43pqt8100-qled-tv/" class="sidebar-deal-name">Philips 43" 120Hz QLED TV</a>
+                <div class="sidebar-deal-price-row">
+                  <span class="sidebar-deal-price">₹27,990</span>
+                  <span class="sidebar-deal-mrp">₹42,990</span>
+                </div>
               </div>
-              <span class="badge-lime" style="font-size: 10px; padding: 3px 8px;">35% OFF</span>
+              <div class="sidebar-deal-action">
+                <span class="badge-lime" style="font-size: 10px; padding: 2px 7px;">35% OFF</span>
+                <a href="https://link.amazon/B0iJbJYxM" target="_blank" rel="nofollow sponsored noopener" class="sidebar-deal-buy-btn" title="Buy Philips 43 on Amazon">
+                  Buy &rarr;
+                </a>
+              </div>
             </div>
 
             <div class="sidebar-deals-item">
-              <div>
+              <div class="sidebar-deal-main">
                 <a href="/products/lg-43nu87-ai-4k-tv/" class="sidebar-deal-name">LG 43" NanoCell 4K TV</a>
-                <span class="sidebar-deal-price">₹31,990 <span style="text-decoration: line-through; opacity: 0.6;">₹45,990</span></span>
+                <div class="sidebar-deal-price-row">
+                  <span class="sidebar-deal-price">₹31,990</span>
+                  <span class="sidebar-deal-mrp">₹45,990</span>
+                </div>
               </div>
-              <span class="badge-lime" style="font-size: 10px; padding: 3px 8px;">30% OFF</span>
+              <div class="sidebar-deal-action">
+                <span class="badge-lime" style="font-size: 10px; padding: 2px 7px;">30% OFF</span>
+                <a href="https://link.amazon/B0iUnT4dz" target="_blank" rel="nofollow sponsored noopener" class="sidebar-deal-buy-btn" title="Buy LG 43 on Amazon">
+                  Buy &rarr;
+                </a>
+              </div>
             </div>
 
             <div class="sidebar-deals-item">
-              <div>
-                <a href="/products/logitech-mk215-wireless-combo/" class="sidebar-deal-name">Logitech MK215 Wireless</a>
-                <span class="sidebar-deal-price">₹995 <span style="text-decoration: line-through; opacity: 0.6;">₹1,945</span></span>
+              <div class="sidebar-deal-main">
+                <a href="/products/logitech-mk215-wireless-combo/" class="sidebar-deal-name">Logitech MK215 Combo</a>
+                <div class="sidebar-deal-price-row">
+                  <span class="sidebar-deal-price">₹995</span>
+                  <span class="sidebar-deal-mrp">₹1,945</span>
+                </div>
               </div>
-              <span class="badge-lime" style="font-size: 10px; padding: 3px 8px;">49% OFF</span>
+              <div class="sidebar-deal-action">
+                <span class="badge-lime" style="font-size: 10px; padding: 2px 7px;">49% OFF</span>
+                <a href="https://link.amazon/B06T5QBlB" target="_blank" rel="nofollow sponsored noopener" class="sidebar-deal-buy-btn" title="Buy Logitech MK215 on Amazon">
+                  Buy &rarr;
+                </a>
+              </div>
             </div>
 
           </div>
