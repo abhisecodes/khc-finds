@@ -405,10 +405,13 @@ document.addEventListener("DOMContentLoaded", () => {
         ? `<span class="card-save-pill">Save ${formatINR(p.oldPrice - p.price)}</span>`
         : "";
 
+      const isFileProtocol = window.location.protocol === "file:";
+      const imgSrc = (isFileProtocol && p.image.startsWith("/")) ? p.image.slice(1) : p.image;
+
       card.innerHTML = `
         <div class="card-image-container">
           ${discountBadgeHtml}
-          <a href="${p.pageUrl}"><img src="${p.image}" alt="${p.title}" loading="lazy"></a>
+          <a href="${p.pageUrl}"><img src="${imgSrc}" alt="${p.title}" loading="lazy"></a>
         </div>
         <div class="card-details">
           <span class="card-brand">${p.brand}</span>
@@ -510,7 +513,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const p = products.find(prod => prod.id === id);
     if (!p) return;
 
-    modalImage.src = p.image;
+    const isFileProtocol = window.location.protocol === "file:";
+    modalImage.src = (isFileProtocol && p.image.startsWith("/")) ? p.image.slice(1) : p.image;
     modalTitle.textContent = p.title;
     modalBrand.textContent = p.brand;
     modalPrice.textContent = formatINR(p.price);
@@ -600,6 +604,17 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       closeProductModal();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (modal && modal.classList.contains("active")) {
+        closeProductModal();
+      }
+      if (articleModal && articleModal.classList.contains("active")) {
+        closeArticleModal();
+      }
     }
   });
 
